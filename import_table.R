@@ -1,4 +1,4 @@
-setwd("/Users/claratrellu/Documents/année sab/plankton planet/Rscripts")
+setwd("/Users/claratrellu/Documents/année sab/plankton planet/Rscripts/Ecotaxa_R")
 require(data.table)
 
 import.table <- function(file){
@@ -10,6 +10,10 @@ import.table <- function(file){
                     .N,
                     by=list(sample_id,object_annotation_category)]
   setnames(plot.data,c("sample","taxo","count"))
+  
+  for.veg <- plot.data
+  for.veg<-for.veg %>% dcast(sample~taxo,fill=0,value.var = "count")
+
   
   # information unique to every object
   object.info <- data[!grepl("^not-living|duplicate|multiple$|t001",object_annotation_hierarchy),
@@ -31,6 +35,6 @@ import.table <- function(file){
                          "concentrated_sample_volume","dilution_factor","speed","total_volume",
                          "acq_id","imaged_volume","min_mesh","max_mesh"))
   
-  result <- list("for.veg"=plot.data,"object.info"=object.info,"sample.info"=sample.info)
+  result <- list("for.veg"=for.veg,"object.info"=object.info,"sample.info"=sample.info,"plot.data"=plot.data)
   return (result)
-  }
+}
