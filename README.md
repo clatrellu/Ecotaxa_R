@@ -6,7 +6,13 @@ This .tsv file should be an export of a project containing images taken using th
 TODO define which export mode to use
       .tsv file containing different samples? should we merge tsv files from unique samples?
 
-TODO define biovolume
+
+## TODO
+- define biovolume (kind of disclaimer)
+- allow user to chose the subset of images to process
+- sur fichier à part : faire PCA à partir de biovolumes 
+- Roxygen
+-
 
 ## Functions
 
