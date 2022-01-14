@@ -1,4 +1,3 @@
-setwd("/Users/claratrellu/Documents/année sab/plankton planet/Rscripts/Ecotaxa_R")
 require(data.table)
 
 import.table <- function(file){
@@ -10,7 +9,7 @@ import.table <- function(file){
                     by=list(sample_id,object_annotation_category)]
   setnames(plot.data,c("sample","taxo","count"))
   
-  # abundancies grouped to be used the vegan package
+  # abundancies grouped to be used by the vegan package
   for.veg <- plot.data
   for.veg<-for.veg %>% dcast(sample~taxo,fill=0,value.var = "count")
 

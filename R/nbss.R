@@ -24,7 +24,7 @@ NBSS <- function(object.info,sample.info,sample){
     a <- intervals[i]
     b <- intervals[i+1]
     Bvtot <- b-a
-    add_ <- objects[(biovol>a)&(biovol<b),sum(biovol)] # sum biovolumes of a certain range of size
+    add_ <- objects[(vol>a)&(vol<b),sum(biovol)] # sum biovolumes of a certain range of size
     add_ <- add_/Bvtot
     y <- append(y,add_)
     x <- append(x,b)
