@@ -1,4 +1,5 @@
 source(file.path(getwd(), "R", "import_table.R"))
+source(file.path(getwd(),"R","nbss.R"))
 #source("cleanplot.pca.R")
 source("PCA.R")
 require(vegan)
@@ -29,3 +30,8 @@ forpca2<-forpca2[order(sample_id)]
 env2 <- rda(X=forpca2[,-1],scale=TRUE)
 biplot(env2,display = c("sites"),scaling=1,main="PCA-scaling1-from biovolumes")
 legend(1,y=1,legend=forpca2$sample_id)
+
+
+#nbss plot test
+g<-NBSS.plot(info.object,info.sample,info.sample[1,1])
+g
