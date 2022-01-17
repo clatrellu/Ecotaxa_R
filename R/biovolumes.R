@@ -1,15 +1,13 @@
-setwd("/Users/claratrellu/Documents/année sab/plankton planet/Rscripts/Ecotax_R")
 require(data.table)
 require(ggplot2)
 
+
 ellipsoid.vol <- function(sample.info,object.info){
-  
   for (id in sample.info$sample_id){ # for each sample
     pixel <- sample.info[sample_id==id,pixel_size]*10**-3 # we want it in mm vs in µm on ecotaxa
     object.info[sample_id==id,':='(major=major*pixel,minor=minor*pixel)] #cf piQv tutorial
     object.info[sample_id==id,volume:=4/3*pi*major/2*(minor/2)**2] # mm^-3
   }
-#return(object.info) # par référence ou pas? 
 }
 
 biovolume <- function(sample.info,object.info) {
@@ -27,12 +25,12 @@ summed.biovol <- function(object.info_){ # object.info should have the column bi
   if ("biovol" %in% colnames(object.info_)){
     sample.names <- unique(object.info_[,sample_id])
     if (length(sample.names)==1){ # if all objects are from the same sample 
-      summed <- as.numeric(object.info_[,sum(biovol)])
+      summed <- as.numeric(object.info_[,sum(biovol),by=category])
     }
     else {
-    summed <- object.info_[,sum(biovol),by=sample_id]
-    setnames(summed,c("sample_id","summed_biovol"))
+    summed <- object.info_[,sum(biovol),by=list(sample_id,category)]
     }
+    setnames(summed,c("sample_id","category","summed_biovol"))
     return(summed)
   }
   else{

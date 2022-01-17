@@ -1,16 +1,10 @@
 # calculation of relative abundance according to the Hellinger method
-
-setwd("/Users/claratrellu/Documents/année sab/plankton planet/Rscripts/Ecotaxa_R")
 require(data.table)
 
-
-relative.abundance <- function(for_veg){
-  for.veg<-for_veg
-  totals <- for.veg[,sum(count),by=sample]
-    
-  for (samp in totals[,sample]){
-    for.veg[sample==samp,rel_abundance:=100*count/totals[sample==samp,V1]]
-    for.veg[sample==samp,composition:=sqrt(rel_abundance)]
+relative.abundance <- function(counts){
+  totals <- counts[,sum(count),by=sample_id]
+  for (samp in totals[,sample_id]){
+    counts[sample_id==samp,rel_abundance:=100*count/totals[sample_id==samp,V1]]
+    counts[sample_id==samp,composition:=sqrt(rel_abundance)]
   }
-  return(for.veg)
 }
