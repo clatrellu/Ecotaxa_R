@@ -2,6 +2,24 @@ require(data.table)
 source(file.path(getwd(), "R", "biovolumes.R"))
 source(file.path(getwd(),"R","relative_abundance.R"))
 
+#' This function is mandatory to use the functions provided in this package. 
+#' It will allow you to process the original tsv file and copy the data in 
+#' different 'data.table' to be then analysed by specific functions. Within this 
+#' function, the functions from biovolume and relative abundance are used to add 
+#' these informations to the tables
+#' 
+#' @param file a .tsv file from a Planktoscope aquisition
+#' @param volumes If true, the functions ellipsoid.vol and biovolume will be 
+#' called to add two additional columns to the returned data table object.info
+#' containing the volume and biovolume of each object
+#' @return the result is a list of four data tables. $for.veg to be used by the 
+#' vegan package, sample in rows and categories in columns, the entries being 
+#' the count of objects being in the corresponding sample and category. $object.info 
+#' contains all objects and their specifications (eg size, color...). $sample.info
+#' contains all samples and their specifications (eg speed, volume filtered, 
+#' concentration factor). $counts is the summary of the absolute and relative 
+#' abundancies of categories in each sample.
+
 import.table <- function(file,volumes=TRUE){
 
   data <- fread(file) # file is in tsv format

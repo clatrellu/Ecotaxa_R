@@ -22,7 +22,7 @@ TODO define which export mode to use
 
 - `import.table` is mandatory to use the functions provided in this package. This function will allow you to process the original tsv file and copy the data in different 'data.table' to be then analysed by specific functions. Within this function, the functions from biovolume and relative abundance are used to add these informations to the tables
 
-- `ellipsoid.biovol` calculates the biovolume based on the ellipsoid approximation of the volume of a particle. It uses the major and minor axis of the image as well as the pixel size. units are in [mm^3]
+- `ellipsoid.vol` calculates the biovolume based on the ellipsoid approximation of the volume of a particle. It uses the major and minor axis of the image as well as the pixel size. units are in [mm^3]
 
 - `biovolume` calculates the normalized biovolume of a particle. This means that it takes into account the volume filtered by the sampling net. units are in [mm^3/m^3]
 
