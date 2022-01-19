@@ -12,6 +12,7 @@ require(ggplot2)
 #'@note This function does not return anything, it adds directly a column 
 #'containing the volume of each object in the data table object.info
 #'
+#roxygen2::roxygenise()
 ellipsoid.vol <- function(sample.info,object.info){
   for (id in sample.info$sample_id){ # for each sample
     pixel <- sample.info[sample_id==id,pixel_size]*10**-3 # we want it in mm vs in µm on ecotaxa

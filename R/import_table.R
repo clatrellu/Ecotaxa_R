@@ -20,25 +20,25 @@ source(file.path(getwd(),"R","relative_abundance.R"))
 #' concentration factor). $counts is the summary of the absolute and relative 
 #' abundancies of categories in each sample.
 
-import.table <- function(file,volumes=TRUE){
+import.table <- function(file,volumes=TRUE,unwanted=c("not-living")){
 
   data <- fread(file) # file is in tsv format
-  # kind of contingency table, useful for vegan
-  counts <- data[!grepl("^not-living|duplicate|multiple$|t001",object_annotation_hierarchy),
-                    .N,
-                    by=list(sample_id,object_annotation_category)]
+  
+  # get rid of the rows containing unwanted objects
+  data<-data[!grepl(paste(unwanted,collapse="|"),object_annotation_hierarchy),]
+  
+  # summary of absolute abundances
+  counts <- data[,.N, by=list(sample_id,object_annotation_category)]
   setnames(counts,c("sample_id","category","count"))
   
   # calculation of relative abundance and composition
   relative.abundance(counts)
-  
-  # abundancies grouped to be used by the vegan package
+  # abundancies grouped to be used by the vegan package, contingency table
   for.veg <- counts
   for.veg<-for.veg %>% dcast(sample_id~category,fill=0,value.var = "count")
 
   # information unique to every object
-  object.info <- data[!grepl("^not-living|duplicate|multiple$|t001",object_annotation_hierarchy),
-                      .(object_id,sample_id,object_area,object_width,object_height,
+  object.info <- data[, .(object_id,sample_id,object_area,object_width,object_height,
                         object_annotation_category,object_annotation_hierarchy, 
                         object_equivalent_diameter,
                         object_major,object_minor, object_stdsaturation)]
@@ -46,8 +46,7 @@ import.table <- function(file,volumes=TRUE){
                        "major","minor","std_saturation"))
   
   # information in common to every object within a sample
-  sample.info <- data[!grepl("^not-living|duplicate|multiple$|t001",object_annotation_hierarchy),
-                      .(sample_id,sample_project,process_id,process_pixel, 
+  sample.info <- data[, .(sample_id,sample_project,process_id,process_pixel, 
                         sample_concentrated_sample_volume,sample_dilution_factor,
                         sample_speed_through_water,sample_total_volume,
                         acq_id,acq_imaged_volume,acq_minimum_mesh,acq_maximum_mesh)]
