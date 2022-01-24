@@ -1,4 +1,3 @@
-setwd("/Users/claratrellu/Documents/année sab/plankton planet/Rscripts/Ecotaxa_R")
 require(data.table)
 require(ggplot2)
 
@@ -18,7 +17,7 @@ require(ggplot2)
 #' for all objects in a sample, the result is the same, except that size spectra 
 #' are given in mm^3 instead of mm^3/m^3
 
-NBSS <- function(object.info,sample.info,sample){ 
+NBSS <- function(object.info,sample.info,sample,N=TRUE){ 
   
   data <- sample.info[sample_id==sample,] # extract the row of interest
   objects <- object.info[sample_id==sample,] # take only the objects of this sample
@@ -38,7 +37,9 @@ NBSS <- function(object.info,sample.info,sample){
     b <- intervals[i+1]
     Bvtot <- b-a
     add_ <- objects[(volume>a)&(volume<b),sum(biovol)] # sum biovolumes of a certain range of size
-    add_ <- add_/Bvtot
+    if (N){
+      add_ <- add_/Bvtot
+    }
     y <- append(y,add_)
     x <- append(x,b)
     
@@ -69,9 +70,21 @@ NBSS.plot <- function(objects,samples,sample_name,ESD=TRUE){
   #convert back to ESD :
   data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)] 
   p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
+    geom_point()  + scale_y_log10()  +
+    labs(x="Equivalent Spherical Diameter [µm]",y="NBSS [mm^3/mm^3/m^3]",title = paste("Normalized Biovolume Size Spectra for the sample",sample_name))
+  
+  return(p)
+}
+
+BSS.plot <- function(objects,samples,sample_name,ESD=TRUE){
+  
+  data <- NBSS(objects,samples,sample_name,N=FALSE)
+  #convert back to ESD :
+  data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)] 
+  p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
     geom_point() +
-    scale_x_log10() +
-    labs(x="Equivalent Spherical Diameter",y="NBSS [mm^3/mm^3/m^3]",title = paste("Normalized Biovolume Size Spectra for the sample",sample_name))
+    scale_x_log10(limits = c(50,200)) + scale_y_log10()  +
+    labs(x="Equivalent Spherical Diameter [µm]",y="BSS [mm^3/mm^3/m^3]",title = paste("Biovolume Size Spectra for the sample",sample_name))
   
   return(p)
 }
