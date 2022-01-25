@@ -1,4 +1,4 @@
-setwd("/Users/claratrellu/Documents/année sab/plankton planet/Rscripts/Ecotaxa_R")
+
 require(data.table)
 require(ggplot2)
 

@@ -1,4 +1,3 @@
-setwd("/Users/claratrellu/Documents/année sab/plankton planet/Rscripts")
 require(data.table)
 require(ggplot2)
 

@@ -1,6 +1,4 @@
 require(data.table)
-source(file.path(getwd(), "R", "biovolumes.R"))
-source(file.path(getwd(),"R","relative_abundance.R"))
 
 #' This function is mandatory to use the functions provided in this package. 
 #' It will allow you to process the original tsv file and copy the data in 
