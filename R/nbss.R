@@ -66,7 +66,7 @@ NBSS <- function(object.info,sample.info,sample,N=TRUE){
 #' 
 NBSS.plot <- function(objects,samples,sample_name,ESD=TRUE){
   
-  data <- NBSS(objects,samples,sample_name)
+  data <- NBSS(objects,samples,sample_name,N=TRUE)
   #convert back to ESD :
   data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)] 
   p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
@@ -84,7 +84,7 @@ BSS.plot <- function(objects,samples,sample_name,ESD=TRUE){
   p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
     geom_point() +
     scale_x_log10(limits = c(50,200)) + scale_y_log10()  +
-    labs(x="Equivalent Spherical Diameter [µm]",y="BSS [mm^3/mm^3/m^3]",title = paste("Biovolume Size Spectra for the sample",sample_name))
+    labs(x="Equivalent Spherical Diameter [µm]",y="BSS [mm^3/m^3]",title = paste("Biovolume Size Spectra for the sample",sample_name))
   
   return(p)
 }
