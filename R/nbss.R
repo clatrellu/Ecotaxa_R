@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> b27343397994c13d1f22ecfe626c2914ad59086c
 require(data.table)
 require(ggplot2)
 

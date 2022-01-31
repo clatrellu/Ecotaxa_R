@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 source(file.path(getwd(), "R", "biovolumes.R"))
 source(file.path(getwd(),"R","relative_abundance.R"))
+=======
+require(data.table)
+>>>>>>> b27343397994c13d1f22ecfe626c2914ad59086c
 
 #' This function is mandatory to use the functions provided in this package. 
 #' It will allow you to process the original tsv file and copy the data in 
