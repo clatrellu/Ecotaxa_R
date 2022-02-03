@@ -21,8 +21,7 @@ require(ggplot2)
 #' for all objects in a sample, the result is the same, except that size spectra 
 #' are given in mm^3 instead of mm^3/m^3
 
-NBSS <- function(object.info,sample.info,sample,N=TRUE){ 
-  
+NBSS <- function(object.info,sample.info,sample=info.sample[1,1],N=TRUE){ 
   data <- sample.info[sample_id==sample,] # extract the row of interest
   objects <- object.info[sample_id==sample,] # take only the objects of this sample
   
@@ -31,7 +30,7 @@ NBSS <- function(object.info,sample.info,sample,N=TRUE){
   top <- (data$max_mesh*10**-3/2)**3*4/3*pi # upper bound
   while (Bvmin < top){
     add <- 2**0.25*Bvmin # Bvmax = Bvmin*2^0.25
-    intervals <- append(intervals,add) # interval serving for x axis of nbss plot
+    intervals <- c(intervals,add) # interval serving for x axis of nbss plot
     Bvmin <- add
   }
   y <- list()
@@ -49,6 +48,8 @@ NBSS <- function(object.info,sample.info,sample,N=TRUE){
     
   }
   nbss.plot <- data.table(Spectra=as.numeric(x),NBSS=as.numeric(y))
+  nbss.plot <- nbss.plot[which(NBSS!=0),] # remove size intervals where there are no objects 
+  nbss.plot <- nbss.plot[,NBSS:=log10(NBSS)] # + log transformation
   return(nbss.plot)
 }
 
@@ -71,10 +72,11 @@ NBSS <- function(object.info,sample.info,sample,N=TRUE){
 NBSS.plot <- function(objects,samples,sample_name,ESD=TRUE){
   
   data <- NBSS(objects,samples,sample_name,N=TRUE)
+  info<-samples[sample_id==sample_name]
   #convert back to ESD :
   data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)] 
   p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
-    geom_point()  + scale_y_log10()  +
+    geom_point()  + scale_x_log10(limits=c(info$min_mesh,info$max_mesh))
     labs(x="Equivalent Spherical Diameter [µm]",y="NBSS [mm^3/mm^3/m^3]",title = paste("Normalized Biovolume Size Spectra for the sample",sample_name))
   
   return(p)
@@ -84,11 +86,22 @@ BSS.plot <- function(objects,samples,sample_name,ESD=TRUE){
   
   data <- NBSS(objects,samples,sample_name,N=FALSE)
   #convert back to ESD :
-  data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)] 
+  data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)]
   p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
     geom_point() +
-    scale_x_log10(limits = c(50,200)) + scale_y_log10()  +
+    scale_x_log10(limits = c(50,200))  +
     labs(x="Equivalent Spherical Diameter [µm]",y="BSS [mm^3/m^3]",title = paste("Biovolume Size Spectra for the sample",sample_name))
   
   return(p)
 }
+
+
+multiple.NBSS <- function(objects,samples){
+  plots <- list()
+  for(sample in samples$sample_id){
+    tmp <- NBSS.plot(objects,samples,sample)
+    plots <- append(plots,tmp)
+  }
+  grid.arrange(grobs=plots)
+}
+  

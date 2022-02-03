@@ -54,16 +54,17 @@ summed.biovol <- function(object.info){
   if ("biovol" %in% colnames(object.info)){
     sample.names <- unique(object.info[,sample_id])
     if (length(sample.names)==1){ # if all objects are from the same sample 
-      summed <- as.numeric(object.info[,sum(biovol),by=category])
+      summed <- object.info[,sum(biovol),by=category]
+      setnames(summed,c("sample_id","summed_biovol"))
     }
     else {
       summed <- object.info[,sum(biovol),by=list(sample_id,category)]
+      setnames(summed,c("sample_id","category","summed_biovol"))
     }
-    setnames(summed,c("sample_id","category","summed_biovol"))
+    replace_na(summed,list(rep(0,ncol(summed))))
     return(summed)
   }
   else{
     print("You need to calculate the biovolumes first")
   } 
 }
-

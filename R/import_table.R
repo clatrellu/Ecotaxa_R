@@ -1,9 +1,11 @@
-<<<<<<< HEAD
+#<<<<<<< HEAD
 source(file.path(getwd(), "R", "biovolumes.R"))
 source(file.path(getwd(),"R","relative_abundance.R"))
-=======
+#=======
 require(data.table)
->>>>>>> b27343397994c13d1f22ecfe626c2914ad59086c
+require(tidyr)
+#require(gtools)
+#>>>>>>> b27343397994c13d1f22ecfe626c2914ad59086c
 
 #' This function is mandatory to use the functions provided in this package. 
 #' It will allow you to process the original tsv file and copy the data in 
@@ -23,16 +25,39 @@ require(data.table)
 #' concentration factor). $counts is the summary of the absolute and relative 
 #' abundancies of categories in each sample.
 
-import.table <- function(file,volumes=TRUE,unwanted=""){
-
-  data <- fread(file) # file is in tsv format
+import.table <- function(files,volumes=TRUE,unwanted=" "){
   
+  #load files
+  if (length(files)>1){
+    data <- data.table()
+    for (file in files){
+      data <- rbind(data,fread(file))
+    }
+  } else {
+    data <- fread(files)
+  }
+
   # get rid of the rows containing unwanted objects
   data<-data[!grepl(paste(unwanted,collapse="|"),object_annotation_hierarchy),]
+  
+  # vectors with names of the columns of interest
+  for.object <- c("object_id","sample_id","object_area","object_width","object_height",
+              "object_annotation_category","object_annotation_hierarchy", 
+              "object_equivalent_diameter",
+              "object_major","object_minor", "object_stdsaturation")
+  for.sample <- c("sample_id","sample_project","process_id","process_pixel", 
+              "sample_concentrated_sample_volume","sample_dilution_factor",
+              "sample_speed_through_water","sample_total_volume",
+              "acq_id","acq_imaged_volume","acq_minimum_mesh","acq_maximum_mesh")
+  
+  
+  # rows with empty entries are omitted  
+  #data <- na.omit(data,unique(c(for.object,for.sample)))
   
   # summary of absolute abundances
   counts <- data[,.N, by=list(sample_id,object_annotation_category)]
   setnames(counts,c("sample_id","category","count"))
+  #replace_na(counts,0)
   
   # calculation of relative abundance and composition
   relative.abundance(counts)
@@ -42,18 +67,12 @@ import.table <- function(file,volumes=TRUE,unwanted=""){
   for.veg<-for.veg %>% dcast(sample_id~category,fill=0,value.var = "count")
 
   # information unique to every object
-  object.info <- data[, .(object_id,sample_id,object_area,object_width,object_height,
-                        object_annotation_category,object_annotation_hierarchy, 
-                        object_equivalent_diameter,
-                        object_major,object_minor, object_stdsaturation)]
+  object.info <- data[, ..for.object]
   setnames(object.info,c("object_id","sample_id","area","width","height","category",
                          "hierarchy","ESD", "major","minor","std_saturation"))
   
   # information in common to every object within a sample
-  sample.info <- data[, .(sample_id,sample_project,process_id,process_pixel, 
-                        sample_concentrated_sample_volume,sample_dilution_factor,
-                        sample_speed_through_water,sample_total_volume,
-                        acq_id,acq_imaged_volume,acq_minimum_mesh,acq_maximum_mesh)]
+  sample.info <- data[, ..for.sample]
   sample.info <- unique(sample.info)
   setnames(sample.info,c("sample_id","project","process_id","pixel_size",
                          "concentrated_sample_volume","dilution_factor","speed",
@@ -67,4 +86,10 @@ import.table <- function(file,volumes=TRUE,unwanted=""){
   result <- list("for.veg"=for.veg,"object.info"=object.info,
                  "sample.info"=sample.info,"counts"=counts)
   return (result)
+}
+
+default <- function(value,default=0){
+  if (is.na(value)){
+    value <- default
+  }
 }
