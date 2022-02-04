@@ -8,10 +8,10 @@ TODO define which export mode to use
 
 
 ## TODO
-- allow user to chose the subset of images to process
-- sur fichier à part : faire PCA à partir de biovolumes 
-- Roxygen
--
+
+- guard on import table
+- vignette
+- detail documentation
 
 ## Definitions
 
