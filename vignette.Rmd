@@ -1,0 +1,173 @@
+---
+title: "Summary Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#library(Ecotaxa_R)
+#devtools::load_all()
+source(file.path(getwd(), "R", "import_table.R"))
+source(file.path(getwd(),"R","nbss.R"))
+source(file.path(getwd(),"R","basic_diversity_plot.R"))
+source(file.path(getwd(),"R","relative_abundance.R"))
+source(file.path(getwd(),"R","biovolumes.R"))
+require(vegan)
+library(magrittr)
+library(gridExtra)
+```
+
+## Introduction
+
+
+This is an example of usage of this package on a small set of data, global.tsv. This tsv file contains 8 samples, from 3 different nets. 
+
+The first step is to import the tsv file or files into the environment. To do this, we define a vector containing all the classification of the particles we wish to omit.
+
+```{r import}
+vec=c("not-living","duplicate","multiple")
+
+tables <- import.table("../global.tsv",unwanted=vec)
+veg <- tables$for.veg
+info.object <- tables$object.info
+info.sample <- tables$sample.info
+data.plot <- tables$counts
+```
+
+
+You can rename and reorder the samples according to how they were named. Here it is more convenient to remove the date and time at the beginning, and order them by sample :
+
+```{r change names}
+
+info.object<-info.object[,sample_id:=sub("^[^A-Za-z]+_","",sample_id)]
+info.sample<-info.sample[,sample_id:=sub("^[^A-Za-z]+_","",sample_id)]
+data.plot<-data.plot[,sample_id:=sub("^[^A-Za-z]+_","",sample_id)]
+veg<-veg[,sample_id:=sub("^[^A-Za-z]+_","",sample_id)]
+veg<-veg[order(sample_id)]
+info.sample<-info.sample[order(sample_id)]
+```
+
+
+We can now start our analysis. 
+
+## PCA
+Let's start by doing a PCA (principal component analysis) on the relative abundances
+```{r PCA relative abundances}
+forpca<-data.plot %>% dcast(sample_id~category,fill=0,value.var = "rel_abundance")
+env <- rda(X=forpca[,-1],scale=TRUE) # vegan function to compute PCA
+smry <- summary(env)
+df1  <- data.frame(smry$sites[,1:2])   
+```
+To enhance your plot, you can then define a color palette corresponding here to the different nets. 
+
+```{r right colors}
+ 
+my.colors <- c(rep("Coryphaena",8),rep("Decknet",3),rep("Fanon",3))
+r <- ggplot(df1,aes(x=PC1,y=PC2,color=my.colors))+geom_point()+
+    labs(title="PCA on relative abundances",
+         x = paste("PC1 ",round(100*smry$cont$importance[2,1])," %"),
+         y = paste("PC2 ",round(100*smry$cont$importance[3,1])," %"))
+r
+```
+
+## PCoA
+
+We can also to principal coordinate analysis, PCoA, for example on relative abundances
+
+```{r PCoA relative abundance}
+d.bray<-vegdist(veg[,-1]) # calculate Bray-Curtis distances
+pcoa<-cmdscale(d.bray,k=2,eig=T) # PCoA function
+pcoa.plot<-data.table(veg[,1],PCo1=pcoa$points[,1],PCo2=pcoa$points[,2])
+d<-ggplot(pcoa.plot,aes(x=PCo1,y=PCo2,color=my.colors)) + geom_point(size=3) +
+    labs(title="PCoA on relative abundances",
+         x = paste("PCo1 ",round(100*pcoa$eig[1]/sum(pcoa$eig))," %"), # percentage explained by the first component
+         y = paste("PCo2 ",round(100*pcoa$eig[2]/sum(pcoa$eig))," %"))  +
+    theme(plot.title.position="panel")
+d
+```
+
+We can then compare the analysis done using PCA vs PCoA
+
+```{r PCA or PCoA}
+grid.arrange(r,d,ncol=2,nrow=1)
+```
+
+Above we used counts to differentiate samples, but we can also use biovolumes :
+
+```{r PCoA}
+sums<-summed.biovol(info.object) # biovolumes by category
+sumspca<-sums %>% dcast(sample_id~category,fill=0,value.var = "summed_biovol") # format for vegdist
+d.bray.biov<-vegdist(sumspca[,-1])
+pcoa.biovol<-cmdscale(d.bray.biov,k=2,eig=TRUE)
+pcoa.b.plot<-data.table(sumspca[,1],PCo1=pcoa.biovol$points[,1],PCo2=pcoa.biovol$points[,2])
+t<-ggplot(pcoa.b.plot,aes(x=PCo1,y=PCo2,color=my.colors)) + 
+  geom_point(size = 4) +
+  labs(title="PCoA on the different the samples using biovolumes",
+       x = paste("PCo1 ",round(100*pcoa.biovol$eig[1]/sum(pcoa.biovol$eig))," %"),
+       y = paste("PCo2 ",round(100*pcoa.biovol$eig[2]/sum(pcoa.biovol$eig))," %"))
+t
+
+```
+
+As it is frequent to have problems with the calculation of filtered volumes, you can compare the result of an analysis on **biovolumes** to an analysis on **standardized biovolumes**. If the interpretation of these two plots are similar, then this suggests that the recorded filtered volume is plausible, therefore the concentrations are valid.
+
+```{r std biovolumes}
+std.sums<-decostand(sumspca[,-1],"total") # decostand will normalize the data
+d.bray.std<-vegdist(std.sums) # PCoA 
+pcoa.std<-cmdscale(d.bray.std,k=2,eig=TRUE)
+pcoa.std.plot<-data.table(sumspca[,1],PCo1=pcoa.std$points[,1],PCo2=pcoa.std$points[,2])
+u<-ggplot(pcoa.std.plot,aes(x=PCo1,y=PCo2,color=my.colors)) + geom_point(size = 4) +   
+  labs(title="PCoA on the different nets using standardized biovolumes", 
+       x = paste("PCo1 ",round(100*pcoa.std$eig[1]/sum(pcoa.std$eig))," %"), 
+       y = paste("PCo2 ",round(100*pcoa.std$eig[2]/sum(pcoa.std$eig))," %")) 
+
+grid.arrange(t, u, ncol = 2, nrow = 1) # plot both plots next to each other
+```
+
+You can also show NBSS plots. These correspond to the normalized biomass size spectra.
+
+```{r nbss}
+# plots<-list()
+# for(k in c(1:6)){
+#   plots<-list(plots,NBSS.plot(info.object,info.sample,info.sample[k,1]))
+# }
+
+g<-NBSS.plot(info.object,info.sample,info.sample[1,1])
+h<-NBSS.plot(info.object,info.sample,info.sample[2,1])
+i<-NBSS.plot(info.object,info.sample,info.sample[3,1])
+j<-NBSS.plot(info.object,info.sample,info.sample[4,1])
+k<-NBSS.plot(info.object,info.sample,info.sample[5,1])
+l<-NBSS.plot(info.object,info.sample,info.sample[6,1])
+grid.arrange(g,h,i,j,k,l,ncol=2,nrow=3)
+```
+
+Compare total biovolumes in between samples
+
+```{r compare total biovolumes}
+total_biovolumes <- sums[,sum(summed_biovol),by=sample_id] # sum by sample
+p<-ggplot(data=total_biovolumes,mapping=aes(y=sample_id,x=V1)) + geom_col() +
+  labs(x="Total biovolume for each sample [mm^3^/m^3^]", y = "Sample")
+p
+```
+
+You can also plot a basic diversity plot to have an idea of the composition of each sample
+
+```{r diversity plot}
+
+divplot <- basic.div(data.plot,threshold_rare = 0.05) +
+  labs(x = "Proportion")
+divplot
+```
+
+In this classification t002 correspond to spines and t004 correspond to chaetoceros fragments, even though these categories are not in Ecotaxa, we can rename them here : 
+
+``` {r rename t00}
+data.plot[category=="t002",category:="Spines"]
+data.plot[category=="t004",category:="Chaetoceros fragment"]
+divplot <- basic.div(data.plot,threshold_rare = 0.05) +
+  labs(x = "Proportion")
+divplot
+
+```
+
+
