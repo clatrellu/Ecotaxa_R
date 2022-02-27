@@ -8,7 +8,7 @@ in this sample
 A column containing the composition is also added, using the formula
 composition = sqrt(relative_abundance)}
 \usage{
-relative.abundance(counts)
+relative.abundance(tab_counts)
 }
 \arguments{
 \item{counts}{a data table with three columns, the sample, the category and

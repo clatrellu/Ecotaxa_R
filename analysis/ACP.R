@@ -1,24 +1,28 @@
 source(file.path(getwd(), "R", "import_table.R"))
 source(file.path(getwd(),"R","nbss.R"))
 source(file.path(getwd(),"R","basic_diversity_plot.R"))
+source(file.path(getwd(),"R","relative_abundance.R"))
+source(file.path(getwd(),"R","biovolumes.R"))
 require(vegan)
 library(magrittr)
-installed.packages("gridExtra")
 library(gridExtra)
 
 vec=c("not-living","duplicate","multiple")
-
+#../mini_v1.tsv","../mini_big.tsv
 # import
-tables <- import.table(list("../mini_v1.tsv","../mini_big.tsv"),unwanted=vec)
+tables <- import.table("../global.tsv",unwanted=vec)
 veg <- tables$for.veg
 info.object <- tables$object.info
 info.sample <- tables$sample.info
 data.plot <- tables$counts
 
+
+info.object<-info.object[,sample_id:=sub("^[^A-Za-z]+_","",sample_id)]
+info.sample<-info.sample[,sample_id:=sub("^[^A-Za-z]+_","",sample_id)]
 data.plot<-data.plot[,sample_id:=sub("^[^A-Za-z]+_","",sample_id)] # to have only the right net names, not ordered according to date and time
 Nets <- c(rep("Coryphaena",8),rep("Decknet",3),rep("Fanon",3))
 
-# PCA from the relative abundancies
+# PCA from the relative abundances
 forpca<-data.plot %>% dcast(sample_id~category,fill=0,value.var = "rel_abundance") # sample in rows, species in columns
 forpca<-forpca[order(sample_id)]
 env <- rda(X=forpca[,-1],scale=TRUE)
@@ -57,7 +61,7 @@ pcoa.std<-cmdscale(d.bray.std,k=2,eig=TRUE)
 pcoa.std.plot<-data.table(sumspca[,1],PCo1=pcoa.std$points[,1],PCo2=pcoa.std$points[,2])
 pPCo1 <- round(100*pcoa.std$eig[1]/sum(pcoa.std$eig))
 pPCo2 <- round(100*pcoa.std$eig[2]/sum(pcoa.std$eig))
-u<-ggplot(pcoa.std.plot,aes(x=PCo1,y=PCo2,color=sample_id)) + geom_point(size = 4) +   
+u<-ggplot(pcoa.std.plot,aes(x=PCo1,y=PCo2,color=Nets)) + geom_point(size = 4) +   
   labs(title="PCoA on the different nets using standardized biovolumes", 
        x = paste("PCo1 ",pPCo1," %"), y=paste("PCo2 ",pPCo2," %")) 
 u
@@ -124,5 +128,5 @@ tmp<-info.object[,.(mean(height),mean(area),mean(std_saturation)),by=sample_id]
 other<-vegdist(tmp[,-1])
 pcoaa<-cmdscale(other,k=2,eig=T)
 pcoaa.plot<-data.table(tmp[,1],PCo1=pcoaa$points[,1],PCo2=pcoaa$points[,2])
-r<-ggplot(pcoaa.plot,aes(x=PCo1,y=PCo2,color=sample_id)) + geom_point(size = 4)
+r<-ggplot(pcoaa.plot,aes(x=PCo1,y=PCo2,color=Nets)) + geom_point(size = 4)
 r

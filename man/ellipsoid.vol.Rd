@@ -2,25 +2,25 @@
 % Please edit documentation in R/biovolumes.R
 \name{ellipsoid.vol}
 \alias{ellipsoid.vol}
-\title{This function calculates the biovolume based on the ellipsoid approximation
-of the volume of a particle. It uses the major and minor axis of the image as
-well as the pixel size. units are in \link{mm^3}}
+\title{This function calculates the volume of a particle based on an ellipsoid
+approximation. It uses the major and minor axis of the image as well as the
+pixel size. Units are in \link{mm^3}}
 \usage{
-ellipsoid.vol(sample.info, object.info)
+ellipsoid.vol(samples, objects)
 }
 \arguments{
-\item{sample.info}{A data table containing samples in rows and details about
+\item{samples}{A data table containing samples in rows and details about
 the latter in columns.}
 
-\item{object.info}{A data table containing objects in rows (not necessarily
+\item{objects}{A data table containing objects in rows (not necessarily
 from the same sample) and details about the objects in the columns.}
 }
 \description{
-This function calculates the biovolume based on the ellipsoid approximation
-of the volume of a particle. It uses the major and minor axis of the image as
-well as the pixel size. units are in \link{mm^3}
+This function calculates the volume of a particle based on an ellipsoid
+approximation. It uses the major and minor axis of the image as well as the
+pixel size. Units are in \link{mm^3}
 }
 \note{
 This function does not return anything, it adds directly a column
-containing the volume of each object in the data table object.info
+containing the volume of each object in the data table objects
 }

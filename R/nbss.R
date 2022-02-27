@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> b27343397994c13d1f22ecfe626c2914ad59086c
 require(data.table)
 require(ggplot2)
 
@@ -9,9 +5,9 @@ require(ggplot2)
 #' NBSS : Normalized Biovolume Size Spectra calculation for a given sample, 
 #' calculate several NBSS spectra to compare samples
 #'
-#' @param object.info A data table containing objects in rows (not necessarily 
+#' @param objects A data table containing objects in rows (not necessarily 
 #' from the same sample) and details about the objects in the columns. 
-#' @param sample.info A data table containing samples in rows and details about 
+#' @param samples A data table containing samples in rows and details about 
 #' the latter in columns.
 #' @param sample a string containing the name of the sample for which to calculate the NBSS
 #' @return a data table containing two columns, the first with the size spectra, 
@@ -21,9 +17,13 @@ require(ggplot2)
 #' for all objects in a sample, the result is the same, except that size spectra 
 #' are given in mm^3 instead of mm^3/m^3
 
-NBSS <- function(object.info,sample.info,sample=info.sample[1,1],N=TRUE){ 
-  data <- sample.info[sample_id==sample,] # extract the row of interest
-  objects <- object.info[sample_id==sample,] # take only the objects of this sample
+NBSS <- function(objects,samples,sample=samples[1,1],N=TRUE){ 
+  data <- samples[sample_id==sample,] # extract the row of interest
+  objects <- objects[sample_id==sample,] # take only the objects of this sample
+  
+  if (nrow(objects)<1000){
+    print("Warning : this sample contains less than 1000 object, therefore the NBSS plot might not be representative enough for such small datasets")
+  }
   
   Bvmin <- 4/3*pi*((data$min_mesh/2)*10**-3)**3 # lower bound
   intervals <- c(Bvmin)
@@ -48,8 +48,7 @@ NBSS <- function(object.info,sample.info,sample=info.sample[1,1],N=TRUE){
     
   }
   nbss.plot <- data.table(Spectra=as.numeric(x),NBSS=as.numeric(y))
-  nbss.plot <- nbss.plot[which(NBSS!=0),] # remove size intervals where there are no objects 
-  nbss.plot <- nbss.plot[,NBSS:=log10(NBSS)] # + log transformation
+  nbss.plot <- nbss.plot[which(NBSS!=0),][,NBSS:=log10(NBSS)] # remove size intervals where there are no objects + log transformation
   return(nbss.plot)
 }
 
@@ -66,7 +65,7 @@ NBSS <- function(object.info,sample.info,sample=info.sample[1,1],N=TRUE){
 #' @return an object of the type ggplot which can then be plotted.
 #' 
 #' @examples 
-#' p <- NBSS.plot(objects=object.info,samples=sample.info,sample_name=sample_id,ESD=TRUE)
+#' p <- NBSS.plot(objects=objects,samples=samples,sample_name=sample_id,ESD=TRUE)
 #' p 
 #' 
 NBSS.plot <- function(objects,samples,sample_name,ESD=TRUE){

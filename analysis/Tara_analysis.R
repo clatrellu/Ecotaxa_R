@@ -5,7 +5,6 @@ source(file.path(getwd(),"R","nbss.R"))
 source(file.path(getwd(),"R","basic_diversity_plot.R"))
 require(vegan)
 library(magrittr)
-install.packages("gridExtra")
 library(gridExtra)
 
 vec=c("not-living","multiple","duplicate")

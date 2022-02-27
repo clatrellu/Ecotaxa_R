@@ -2,34 +2,35 @@
 % Please edit documentation in R/import_table.R
 \name{import.table}
 \alias{import.table}
-\title{This function is mandatory to use the functions provided in this package.
-It will allow you to process the original tsv file and copy the data in
-different 'data.table' to be then analysed by specific functions. Within this
-function, the functions from biovolume and relative abundance are used to add
-these informations to the tables}
+\title{Import data from tsv file}
 \usage{
-import.table(file, volumes = TRUE, unwanted = c("not-living"))
+import.table(files, volumes = TRUE, unwanted = " ")
 }
 \arguments{
-\item{file}{a .tsv file from a Planktoscope aquisition}
-
 \item{volumes}{If true, the functions ellipsoid.vol and biovolume will be
 called to add two additional columns to the returned data table object.info
 containing the volume and biovolume of each object}
+
+\item{unwanted}{a vector or list of strings containing the names of the categories
+you wish to discard. The function will search for these keywords in the field
+object_annotation hierarchy, therefore you can target large categories that include
+several species. By default, the function will keep all categories.}
+
+\item{file}{a .tsv file from a Planktoscope aquisition classified with Ecotaxa}
 }
 \value{
 the result is a list of four data tables. $for.veg to be used by the
 vegan package, sample in rows and categories in columns, the entries being
 the count of objects being in the corresponding sample and category. $object.info
-contains all objects and their specifications (eg size, color...). $sample.info
-contains all samples and their specifications (eg speed, volume filtered,
+contains all objects (rows) and their specifications (eg size, color...). $sample.info
+contains all samples (rows) and their specifications (eg speed, volume filtered,
 concentration factor). $counts is the summary of the absolute and relative
-abundancies of categories in each sample.
+abundances of categories in each sample.
 }
 \description{
 This function is mandatory to use the functions provided in this package.
 It will allow you to process the original tsv file and copy the data in
 different 'data.table' to be then analysed by specific functions. Within this
 function, the functions from biovolume and relative abundance are used to add
-these informations to the tables
+these parameters to the tables
 }

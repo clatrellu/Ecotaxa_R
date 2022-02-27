@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 .README.html
+vignette.html
+data/tara1.tsv

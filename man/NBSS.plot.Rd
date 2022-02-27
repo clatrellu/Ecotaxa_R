@@ -26,7 +26,7 @@ an object of the type ggplot which can then be plotted.
 Plotting of the NBSS - Normalized Biovolume Size Spectra - of a given sample
 }
 \examples{
-p <- NBSS.plot(objects=object.info,samples=sample.info,sample_name=sample_id,ESD=TRUE)
+p <- NBSS.plot(objects=objects,samples=samples,sample_name=sample_id,ESD=TRUE)
 p 
 
 }

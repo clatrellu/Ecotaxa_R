@@ -4,14 +4,14 @@
 \alias{summed.biovol}
 \title{This function computes the sum of biovolumes per category within each sample}
 \usage{
-summed.biovol(object.info)
+summed.biovol(objects)
 }
 \arguments{
-\item{object.info}{A data table containing objects in rows (not necessarily
+\item{objects}{A data table containing objects in rows (not necessarily
 from the same sample) and details about the objects in the columns.}
 }
 \value{
-the result is a data table with in the rows the different combinations
+the result is a data table with : in the rows the different combinations
 of samples and categories, and containing an additional column: the summed
 biovolumes of each category within their sample.
 }

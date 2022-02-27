@@ -5,13 +5,13 @@
 \title{This function calculates the biovolume of a particle. This is the percentage
 volume a particle \link{mm^3} takes up in a unit of filtered water\link{m^3}.}
 \usage{
-biovolume(sample.info, object.info)
+biovolume(samples, objects)
 }
 \arguments{
-\item{sample.info}{A data table containing samples in rows and details about
+\item{samples}{A data table containing samples in rows and details about
 the latter in columns.}
 
-\item{object.info}{A data table containing objects in rows (not necessarily
+\item{objects}{A data table containing objects in rows (not necessarily
 from the same sample) and details about the objects in the columns.}
 }
 \description{
@@ -20,7 +20,7 @@ volume a particle \link{mm^3} takes up in a unit of filtered water\link{m^3}.
 }
 \note{
 This function does not return anything, it adds directly a column
-containing the biovolume of each object in the data table object.info
+containing the biovolume of each object in the data table objects
 
 It is relevant to talk about biovolume when looking about at a certain
 catgeory of plankton, when we sum individual biovolumes to show what part

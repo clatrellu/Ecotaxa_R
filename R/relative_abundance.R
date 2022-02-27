@@ -13,10 +13,10 @@ require(data.table)
 #' table passed as argument.
 #' 
 
-relative.abundance <- function(counts){
-  totals <- counts[,sum(count),by=sample_id]
+relative.abundance <- function(tab_counts){
+ totals <- tab_counts[,sum(count),by=sample_id]
   for (samp in totals[,sample_id]){
-    counts[sample_id==samp,rel_abundance:=100*count/totals[sample_id==samp,V1]]
-    counts[sample_id==samp,composition:=sqrt(rel_abundance)]
+    tab_counts[sample_id==samp,rel_abundance:=100*count/totals[sample_id==samp,V1]]
+    tab_counts[sample_id==samp,composition:=sqrt(rel_abundance)]
   }
 }

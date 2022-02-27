@@ -5,13 +5,13 @@
 \title{NBSS : Normalized Biovolume Size Spectra calculation for a given sample,
 calculate several NBSS spectra to compare samples}
 \usage{
-NBSS(object.info, sample.info, sample)
+NBSS(objects, samples, sample = samples[1, 1], N = TRUE)
 }
 \arguments{
-\item{object.info}{A data table containing objects in rows (not necessarily
+\item{objects}{A data table containing objects in rows (not necessarily
 from the same sample) and details about the objects in the columns.}
 
-\item{sample.info}{A data table containing samples in rows and details about
+\item{samples}{A data table containing samples in rows and details about
 the latter in columns.}
 
 \item{sample}{a string containing the name of the sample for which to calculate the NBSS}
