@@ -5,16 +5,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-#library(Ecotaxa_R)
-#devtools::load_all()
-source(file.path(getwd(), "R", "import_table.R"))
-source(file.path(getwd(),"R","nbss.R"))
-source(file.path(getwd(),"R","basic_diversity_plot.R"))
-source(file.path(getwd(),"R","relative_abundance.R"))
-source(file.path(getwd(),"R","biovolumes.R"))
-require(vegan)
-library(magrittr)
-library(gridExtra)
+devtools::load_all(reset = T)
 ```
 
 ## Introduction
@@ -25,13 +16,12 @@ This is an example of usage of this package on a small set of data, global.tsv. 
 The first step is to import the tsv file or files into the environment. To do this, we define a vector containing all the classification of the particles we wish to omit.
 
 ```{r import}
-vec=c("not-living","duplicate","multiple")
+data <- import.data("data/example/global.tsv",
+                    unwanted = c("not-living","duplicate","multiple"))
 
-tables <- import.table("../global.tsv",unwanted=vec)
-veg <- tables$for.veg
-info.object <- tables$object.info
-info.sample <- tables$sample.info
-data.plot <- tables$counts
+get.counts(data,transfo="total")
+get.info(data,type="sample")
+get.info(data,type="object")
 ```
 
 
