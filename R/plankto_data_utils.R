@@ -8,6 +8,41 @@ rm_unwanted <-  function(input,taxo_column ="object_annotation_hierarchy",unwant
   }
 }
 
+taxo_plot_categ <- function(x,taxocol,quantity,ngroups=9){
+  y <- x[,.(total=sum(get(quantity))),by=taxocol]
+  if(nrow(y)>ngroups){
+    y <- y[order(total,decreasing=TRUE),get(taxocol)][1:(ngroups-1)]
+    x[get(taxocol)%in%y,category_plot:=get(taxocol)]
+    x[!get(taxocol)%in%y,category_plot:="others"]
+    x[,category_plot:=factor(category_plot,levels=c(y,"others"))]
+  }else{
+    print("Less groups in the table than the number requested")
+  }
+}
+
+simplify_ids <- function(planktotable){
+  planktotable[,sample_id:=sub("^\\d+/\\d+/\\d+_\\d+:\\d+_","",sample_id)]
+  planktotable[]
+}
+
+
+
+add.volumes <- function(planktotable){
+  planktotable[,volume:={
+    pixel <- unique(process_pixel)*10**-3
+    major_pix <- object_major * pixel
+    minor_pix <- object_minor * pixel
+    4/3*pi*major_pix/2*(minor_pix/2)**2
+  },by=sample_id]
+  planktotable[is.na(sample_dilution_factor),sample_dilution_factor:=1]
+  
+  planktotable[,biovolume:={
+    norm_vol <- sample_concentrated_sample_volume/(sample_dilution_factor*acq_imaged_volume*sample_total_volume)
+    volume*norm_vol
+  },by=sample_id]
+  planktotable[]
+}
+
 #' Import data from tsv file
 #' @description This function is mandatory to use the functions provided in this package. 
 #' It will allow you to process the original tsv file and copy the data in 
@@ -38,27 +73,35 @@ import.data <- function(files=NULL, unwanted = NA, taxo_column = "object_annotat
   if(length(files)>1){
     lapply(X = files, FUN = fread) |> 
       rbindlist() |>
-      rm_unwanted(taxo_column = taxo_column,unwanted=unwanted)
+      rm_unwanted(taxo_column = taxo_column,unwanted=unwanted) |>
+      add.volumes() |>
+      simplify_ids()
   }else if(length(files)==1){
-    fread(files) |> rm_unwanted(taxo_column = taxo_column,unwanted=unwanted)
+    fread(files) |> 
+      rm_unwanted(taxo_column = taxo_column,unwanted=unwanted) |>
+      add.volumes() |>
+      simplify_ids()
   } else{
     print("Please provide at least one file name")
   }
 }
 
-
-get.counts <- function(planktotable,transfo="none"){
+get.counts.and.vol <- function(planktotable){
   counts <- planktotable[,.N, by=list(sample_id,object_annotation_category)]
   setnames(counts,c("sample_id","category","count"))
-  if(transfo=="none"){
-    list(wide=counts,
-         long=dcast(sample_id~category,data=counts,fill=0,value.var = "count"))
-  }else if(transfo=="total"){
-    counts[,prop:=count/sum(count),by=sample_id]
-    list(wide=counts,
-         long=dcast(sample_id~category,data=counts,fill=0,value.var = "prop"))
-  }
+  counts[,count_proportion:=count/sum(count),by=sample_id]
+  
+  volumes <- planktotable[,.(sum(volume),sum(biovolume)),by=list(sample_id,object_annotation_category)]
+  setnames(volumes,c("sample_id","category","volume","biovolume"))
+  
+  output <- merge(counts,volumes,by=c("sample_id","category"))
+  output[]
+}
 
+
+get.df.vegan <- function(x,value.var="count"){
+  dcast(sample_id~category,data=x,fill=0,value.var = value.var) |>
+    data.frame(row.names="sample_id")
 }
 
 get.info <- function(planktotable,type="sample"){
@@ -71,4 +114,7 @@ get.info <- function(planktotable,type="sample"){
   setnames(output,cols,sub(tmp_regex,"",cols))
   unique(output)
 }
+
+
+
 
