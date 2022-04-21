@@ -57,7 +57,7 @@ ggplot(data_distrib,aes(x=sample_id,y=biovolume))+
   geom_col(aes(fill=category))
 ```
 
-`r emo::ji("disappointed")` that plot doesn't look good. Let's tune it a bit!
+That plot doesn't look good. Let's tune it a bit!
 
 We use the function `plot_categ()` to limit the number of categories (colours) to 9...
  
