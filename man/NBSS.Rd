@@ -5,7 +5,7 @@
 \title{NBSS : Normalized Biovolume Size Spectra calculation for a given sample,
 calculate several NBSS spectra to compare samples}
 \usage{
-NBSS(objects, samples, sample = samples[1, 1], N = TRUE)
+NBSS(planktotable, N = TRUE)
 }
 \arguments{
 \item{objects}{A data table containing objects in rows (not necessarily

@@ -4,9 +4,12 @@
 \alias{NBSS.plot}
 \title{Plotting of the NBSS - Normalized Biovolume Size Spectra - of a given sample}
 \usage{
-NBSS.plot(objects, samples, sample_name, ESD = TRUE)
+NBSS.plot(planktotable, ESD = TRUE)
 }
 \arguments{
+\item{ESD}{If ESD is true, by default, the x axis is expressed as ESD (Eqivalent spherical
+diameter for a given volume) in \link{µm}. Otherwise, volumes will be on the x-axis in \link{mm^3}}
+
 \item{objects}{A data table containing objects as rows and details on these objects in the
 columns. This argument will be passed in the NBSS function}
 
@@ -15,9 +18,6 @@ the latter in columns.}
 
 \item{sample_name}{A string containing the name of the sample from which to extract objects
 and do an NBSS analysis.}
-
-\item{ESD}{If ESD is true, by default, the x axis is expressed as ESD (Eqivalent spherical
-diameter for a given volume) in \link{µm}. Otherwise, volumes will be on the x-axis in \link{mm^3}}
 }
 \value{
 an object of the type ggplot which can then be plotted.
