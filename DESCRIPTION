@@ -14,5 +14,6 @@ Imports:
   ggplot2,
   ggrepel,
   vegan,
-  patchwork
+  patchwork,
+  R.utils
 URL: https://clatrellu.github.io/Ecotaxa_R/
