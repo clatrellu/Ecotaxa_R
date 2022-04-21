@@ -52,7 +52,7 @@ We can now start to analyse data.
 
 A quick way to have an overview of the taxonomic composition of our sample is to produce barcharts coloured by taxonomic groups.
 
-```{r, fig.width=7,fig.height=5}
+```{r, fig.width=7,fig.height=5,fig.align="center"}
 ggplot(data_distrib,aes(x=sample_id,y=biovolume))+
   geom_col(aes(fill=category))
 ```
@@ -126,7 +126,7 @@ pcoa.plot <- merge(pcoa.plot,context[,list(id,sampling_gear)],by="id")
 
 and visualize the results using ggplot2. We plot on top of the PCoA the taxonomic composition barcharts (biovolumes).
 
-```{r, fig.width=7,fig.height=10}
+```{r, fig.width=7,fig.height=10,fig.align="center"}
 pcoa_biov <- ggplot(pcoa.plot,aes(x=PCo1,y=PCo2,color=sampling_gear)) +
   geom_point(size=3) +
   geom_text_repel(aes(label=id))+
@@ -151,7 +151,7 @@ biovolume_df_total <- decostand(biovolume_df,method = "total")
 
 Then, the analysis is the same as before.
 
-```{r, fig.width=7,fig.height=10}
+```{r, fig.width=7,fig.height=10,fig.align="center"}
 d.bray<-vegdist(biovolume_df_total)
 pcoa<-cmdscale(d.bray,k=2,eig=T)
 pcoa.plot<-data.table(id=row.names(biovolume_df_total),PCo1=pcoa$points[,1],PCo2=pcoa$points[,2])
@@ -184,7 +184,7 @@ res <- lapply(split(data_selection,by="sample_id"),function(X){
 })
 ```
 
-```{r fig.width=7,fig.height=13,warning=FALSE}
+```{r fig.width=7,fig.height=13,warning=FALSE,fig.align="center"}
 wrap_plots(res[1:8],nrow = 4,ncol=2)
 ```
 
