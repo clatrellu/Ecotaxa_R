@@ -17,17 +17,15 @@ require(ggplot2)
 #' for all objects in a sample, the result is the same, except that size spectra 
 #' are given in mm^3 instead of mm^3/m^3
 
-NBSS <- function(objects,samples,sample=samples[1,1],N=TRUE){ 
-  data <- samples[sample_id==sample,] # extract the row of interest
-  objects <- objects[sample_id==sample,] # take only the objects of this sample
+NBSS <- function(planktotable,N=TRUE){ 
   
-  if (nrow(objects)<1000){
+  if (nrow(planktotable)<1000){
     print("Warning : this sample contains less than 1000 object, therefore the NBSS plot might not be representative enough for such small datasets")
   }
   
-  Bvmin <- 4/3*pi*((data$min_mesh/2)*10**-3)**3 # lower bound
+  Bvmin <- 4/3*pi*((unique(planktotable$acq_minimum_mesh)/2)*10**-3)**3 # lower bound
   intervals <- c(Bvmin)
-  top <- (data$max_mesh*10**-3/2)**3*4/3*pi # upper bound
+  top <- (unique(planktotable$acq_maximum_mesh)*10**-3/2)**3*4/3*pi # upper bound
   while (Bvmin < top){
     add <- 2**0.25*Bvmin # Bvmax = Bvmin*2^0.25
     intervals <- c(intervals,add) # interval serving for x axis of nbss plot
@@ -39,7 +37,7 @@ NBSS <- function(objects,samples,sample=samples[1,1],N=TRUE){
     a <- intervals[i]
     b <- intervals[i+1]
     Bvtot <- b-a
-    add_ <- objects[(volume>a)&(volume<b),sum(biovol)] # sum biovolumes of a certain range of size
+    add_ <- planktotable[(volume>a)&(volume<b),sum(biovolume)] # sum biovolumes of a certain range of size
     if (N){
       add_ <- add_/Bvtot
     }
@@ -48,8 +46,9 @@ NBSS <- function(objects,samples,sample=samples[1,1],N=TRUE){
     
   }
   nbss.plot <- data.table(Spectra=as.numeric(x),NBSS=as.numeric(y))
-  nbss.plot <- nbss.plot[which(NBSS!=0),][,NBSS:=log10(NBSS)] # remove size intervals where there are no objects + log transformation
-  return(nbss.plot)
+  nbss.plot <- nbss.plot[which(NBSS!=0),] # remove size intervals where there are no objects + log transformation
+  nbss.plot[,NBSS:=log10(NBSS)]
+  nbss.plot[]
 }
 
 #' Plotting of the NBSS - Normalized Biovolume Size Spectra - of a given sample
@@ -68,39 +67,41 @@ NBSS <- function(objects,samples,sample=samples[1,1],N=TRUE){
 #' p <- NBSS.plot(objects=objects,samples=samples,sample_name=sample_id,ESD=TRUE)
 #' p 
 #' 
-NBSS.plot <- function(objects,samples,sample_name,ESD=TRUE){
+NBSS.plot <- function(planktotable,ESD=TRUE){
   
-  data <- NBSS(objects,samples,sample_name,N=TRUE)
-  info<-samples[sample_id==sample_name]
+  sample_name <- planktotable[,unique(sample_id)]
+  data <- NBSS(planktotable,N=TRUE)
+  
   #convert back to ESD :
-  data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)] 
-  p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
-    geom_point()  + scale_x_log10(limits=c(info$min_mesh,info$max_mesh))
-    labs(x="Equivalent Spherical Diameter [µm]",y="NBSS [mm^3/mm^3/m^3]",title = paste("Normalized Biovolume Size Spectra for the sample",sample_name))
   
-  return(p)
-}
-
-BSS.plot <- function(objects,samples,sample_name,ESD=TRUE){
-  
-  data <- NBSS(objects,samples,sample_name,N=FALSE)
-  #convert back to ESD :
   data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)]
+  
+  min_mesh <- unique(planktotable$acq_minimum_mesh)
+  max_mesh <- unique(planktotable$acq_maximum_mesh)
+  
   p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
-    geom_point() +
-    scale_x_log10(limits = c(50,200))  +
-    labs(x="Equivalent Spherical Diameter [µm]",y="BSS [mm^3/m^3]",title = paste("Biovolume Size Spectra for the sample",sample_name))
+    geom_point()  + scale_x_log10(limits=c(min_mesh,max_mesh))+
+    labs(x="Equivalent Spherical Diameter [µm]",y="NBSS [mm^3/mm^3/m^3]",title = paste("NBSS:",sample_name))
   
   return(p)
 }
 
-
-multiple.NBSS <- function(objects,samples){
-  plots <- list()
-  for(sample in samples$sample_id){
-    tmp <- NBSS.plot(objects,samples,sample)
-    plots <- append(plots,tmp)
-  }
-  grid.arrange(grobs=plots)
+BSS.plot <- function(planktotable,ESD=TRUE){
+  
+  sample_name <- planktotable[,unique(sample_id)]
+  data <- NBSS(planktotable,N=FALSE)
+  
+  #convert back to ESD :
+  
+  data[,Spectra:=2*10**3*(Spectra*3/(4*pi))**(1/3)]
+  
+  min_mesh <- unique(planktotable$acq_minimum_mesh)
+  max_mesh <- unique(planktotable$acq_maximum_mesh)
+  
+  p <- ggplot(data,aes(x=Spectra,y=NBSS)) + 
+    geom_point()  + scale_x_log10(limits=c(min_mesh,max_mesh))+
+    labs(x="Equivalent Spherical Diameter [µm]",y="BSS [mm^3/m^3]",title = paste("BSS:",sample_name))
+  
+  return(p)
 }
   
