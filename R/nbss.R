@@ -1,7 +1,3 @@
-require(data.table)
-require(ggplot2)
-
-
 #' NBSS : Normalized Biovolume Size Spectra calculation for a given sample, 
 #' calculate several NBSS spectra to compare samples
 #'
@@ -52,7 +48,7 @@ NBSS <- function(planktotable,N=TRUE){
 }
 
 #' Plotting of the NBSS - Normalized Biovolume Size Spectra - of a given sample
-#' 
+#' @import ggplot2
 #' @param objects A data table containing objects as rows and details on these objects in the 
 #' columns. This argument will be passed in the NBSS function
 #' @param samples A data table containing samples in rows and details about 
@@ -66,7 +62,8 @@ NBSS <- function(planktotable,N=TRUE){
 #' @examples 
 #' p <- NBSS.plot(objects=objects,samples=samples,sample_name=sample_id,ESD=TRUE)
 #' p 
-#' 
+#' @export NBSS.plot
+
 NBSS.plot <- function(planktotable,ESD=TRUE){
   
   sample_name <- planktotable[,unique(sample_id)]
@@ -85,6 +82,8 @@ NBSS.plot <- function(planktotable,ESD=TRUE){
   
   return(p)
 }
+
+#' @export BSS.plot
 
 BSS.plot <- function(planktotable,ESD=TRUE){
   
