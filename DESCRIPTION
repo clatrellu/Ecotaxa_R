@@ -11,6 +11,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports:
   data.table,
-  ggplot2
+  ggplot2,
+  ggrepel,
+  vegan,
+  patchwork
 URL: https://clatrellu.github.io/Ecotaxa_R/
-
