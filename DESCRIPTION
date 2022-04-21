@@ -9,10 +9,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-<<<<<<< HEAD
 Imports:
   data.table
   ggplot2
-=======
 URL: https://clatrellu.github.io/Ecotaxa_R/
->>>>>>> ce8bd60730e6902ec373da642a1f503a0e7d8b8e
+
