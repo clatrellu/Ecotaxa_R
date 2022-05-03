@@ -3,7 +3,7 @@ pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   vignette: vignette.html
-last_built: 2022-05-03T10:23Z
+last_built: 2022-05-03T10:57Z
 urls:
   reference: https://clatrellu.github.io/Ecotaxa_R/reference
   article: https://clatrellu.github.io/Ecotaxa_R/articles
