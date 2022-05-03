@@ -23,9 +23,8 @@ Feel free to add any other tools that might be of interest to interpret classifi
 Planktoscope data.
 
 
-
 ## Definitions
 
 - Biovolume : volume of a cell in mm^3 per cubic metre of water. The summed biovolume allows to represent proportion of a group of cells in a volume of water. 
 - NBSS : Normalized Biovolume Size Spectra
--   
+
