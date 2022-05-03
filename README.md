@@ -1,17 +1,25 @@
 
 ## Introduction
 
-This set of function will allow you to process and analyse data from a .tsv file from ecotaxa.
-This .tsv file should be an export of a project containing images taken using the Planktoscope.
-TODO define which export mode to use
-      .tsv file containing different samples? should we merge tsv files from unique samples?
+This set of function will allow you to process and analyse data from one or several .tsv files from ecotaxa. This/these .tsv file(s) should be an export of a project containing images taken using the Planktoscope. It will produce a first basic analysis of the diversity in your samples as well as a comparison between samples.
 
+## Installation
 
-## TODO
+You can install planktoscopeR from github with:
 
-- guard on import table
-- vignette
-- detail documentation
+```
+install.packages("devtools")
+devtools::install_github("nhenry50/planktoscopeR")
+
+```
+
+## Usage
+
+To have an example of how to use the functions, have a look at
+`vignette("basic_analysis")`
+Feel free to add any other tools that might be of interest to interpret classified
+Planktoscope data.
+
 
 ## Definitions
 
