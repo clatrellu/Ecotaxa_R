@@ -1,0 +1,1282 @@
+trellu@upgonsrv1:~$ groups
+upgon vglusers condausers
+trellu@upgonsrv1:~$ conda activate 3DCT
+conda: command not found
+trellu@upgonsrv1:~$ gedit .bash
+.bash_history  .bash_logout   .bashrc        
+trellu@upgonsrv1:~$ gedit .bashrc
+trellu@upgonsrv1:~$ source .bashrc
+trellu@upgonsrv1:~$ conda activate 3DCT
+(3DCT) trellu@upgonsrv1:~$ jupyter notebook
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/3DCT/bin/jupyter-notebook", line 7, in <module>
+    from notebook.notebookapp import main
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/notebook/notebookapp.py", line 43, in <module>
+    from jinja2 import Environment, FileSystemLoader
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/jinja2/__init__.py", line 8, in <module>
+    from .environment import Environment as Environment
+ValueError: source code string cannot contain null bytes
+(3DCT) trellu@upgonsrv1:~$ pip install jupyter notebook
+Collecting jupyter
+  Downloading https://files.pythonhosted.org/packages/83/df/0f5dd132200728a86190397e1ea87cd76244e42d39ec5e88efd25b2abd7e/jupyter-1.0.0-py2.py3-none-any.whl
+Requirement already satisfied: notebook in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (6.4.11)
+Requirement already satisfied: ipykernel in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jupyter) (6.9.1)
+Requirement already satisfied: qtconsole in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jupyter) (5.3.0)
+Collecting ipywidgets (from jupyter)
+  Downloading https://files.pythonhosted.org/packages/86/7d/06b48ec5fd605775c7e85b3ea397d8f0294f66d570bcee59496eb5195fc5/ipywidgets-7.7.0-py2.py3-none-any.whl (123kB)
+     |████████████████████████████████| 133kB 5.4MB/s 
+Collecting jupyter-console (from jupyter)
+  Downloading https://files.pythonhosted.org/packages/fc/e9/5d4e1e616f7d7a8a9d7f313ac14bf43d1ea33cae6859eeb761b8cac364c2/jupyter_console-6.4.3-py3-none-any.whl
+Requirement already satisfied: nbconvert in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jupyter) (6.4.4)
+Requirement already satisfied: tornado>=6.1 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (6.1)
+Requirement already satisfied: argon2-cffi in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (21.3.0)
+Requirement already satisfied: Send2Trash>=1.8.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (1.8.0)
+Requirement already satisfied: jupyter-core>=4.6.1 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (4.10.0)
+Requirement already satisfied: ipython-genutils in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (0.2.0)
+Requirement already satisfied: jinja2 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (3.0.3)
+Requirement already satisfied: pyzmq>=17 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (22.3.0)
+Requirement already satisfied: jupyter-client>=5.3.4 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (7.2.2)
+Requirement already satisfied: terminado>=0.8.3 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (0.13.1)
+Requirement already satisfied: traitlets>=4.2.1 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (5.1.1)
+Requirement already satisfied: prometheus-client in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (0.13.1)
+Requirement already satisfied: nest-asyncio>=1.5 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (1.5.5)
+Requirement already satisfied: nbformat in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from notebook) (5.3.0)
+Requirement already satisfied: matplotlib-inline<0.2.0,>=0.1.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipykernel->jupyter) (0.1.2)
+Requirement already satisfied: debugpy<2.0,>=1.0.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipykernel->jupyter) (1.5.1)
+Requirement already satisfied: ipython>=7.23.1 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipykernel->jupyter) (7.31.1)
+Requirement already satisfied: pygments in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from qtconsole->jupyter) (2.11.2)
+Requirement already satisfied: qtpy>=2.0.1 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from qtconsole->jupyter) (2.0.1)
+Collecting widgetsnbextension~=3.6.0 (from ipywidgets->jupyter)
+  Downloading https://files.pythonhosted.org/packages/4e/69/273f584c28805939c6cb45717638cb8edbd78147f02c564b8c7763e1872e/widgetsnbextension-3.6.0-py2.py3-none-any.whl (1.6MB)
+     |████████████████████████████████| 1.6MB 22.2MB/s 
+Collecting jupyterlab-widgets>=1.0.0; python_version >= "3.6" (from ipywidgets->jupyter)
+  Downloading https://files.pythonhosted.org/packages/5f/2c/7331aa9c5041e8b107d712d853268e137f55014b858407816b5487289d11/jupyterlab_widgets-1.1.0-py3-none-any.whl (245kB)
+     |████████████████████████████████| 245kB 23.5MB/s 
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jupyter-console->jupyter) (3.0.20)
+Requirement already satisfied: jupyterlab-pygments in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (0.1.2)
+Requirement already satisfied: entrypoints>=0.2.2 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (0.4)
+Requirement already satisfied: nbclient<0.6.0,>=0.5.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (0.5.13)
+Requirement already satisfied: bleach in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (4.1.0)
+Requirement already satisfied: mistune<2,>=0.8.1 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (0.8.4)
+Requirement already satisfied: testpath in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (0.5.0)
+Requirement already satisfied: pandocfilters>=1.4.1 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (1.5.0)
+Requirement already satisfied: defusedxml in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (0.7.1)
+Requirement already satisfied: beautifulsoup4 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbconvert->jupyter) (4.11.1)
+Requirement already satisfied: typing-extensions; python_version < "3.8" in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from argon2-cffi->notebook) (4.1.1)
+Requirement already satisfied: argon2-cffi-bindings in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from argon2-cffi->notebook) (21.2.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jinja2->notebook) (2.0.1)
+Requirement already satisfied: python-dateutil>=2.8.2 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jupyter-client>=5.3.4->notebook) (2.8.2)
+Requirement already satisfied: ptyprocess; os_name != "nt" in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from terminado>=0.8.3->notebook) (0.7.0)
+Requirement already satisfied: fastjsonschema in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbformat->notebook) (2.15.1)
+Requirement already satisfied: jsonschema>=2.6 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from nbformat->notebook) (4.4.0)
+Requirement already satisfied: backcall in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipython>=7.23.1->ipykernel->jupyter) (0.2.0)
+Requirement already satisfied: pickleshare in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipython>=7.23.1->ipykernel->jupyter) (0.7.5)
+Requirement already satisfied: jedi>=0.16 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipython>=7.23.1->ipykernel->jupyter) (0.18.1)
+Requirement already satisfied: decorator in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipython>=7.23.1->ipykernel->jupyter) (5.1.1)
+Requirement already satisfied: pexpect>4.3; sys_platform != "win32" in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipython>=7.23.1->ipykernel->jupyter) (4.8.0)
+Requirement already satisfied: setuptools>=18.5 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from ipython>=7.23.1->ipykernel->jupyter) (61.2.0)
+Requirement already satisfied: packaging in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from qtpy>=2.0.1->qtconsole->jupyter) (21.3)
+Requirement already satisfied: wcwidth in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->jupyter-console->jupyter) (0.2.5)
+Requirement already satisfied: webencodings in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from bleach->nbconvert->jupyter) (0.5.1)
+Requirement already satisfied: six>=1.9.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from bleach->nbconvert->jupyter) (1.16.0)
+Requirement already satisfied: cffi>=1.0.1 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from argon2-cffi-bindings->argon2-cffi->notebook) (1.15.0)
+Requirement already satisfied: attrs>=17.4.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jsonschema>=2.6->nbformat->notebook) (21.4.0)
+Requirement already satisfied: importlib-metadata; python_version < "3.8" in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jsonschema>=2.6->nbformat->notebook) (4.11.3)
+Requirement already satisfied: importlib-resources>=1.4.0; python_version < "3.9" in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jsonschema>=2.6->nbformat->notebook) (5.2.0)
+Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jsonschema>=2.6->nbformat->notebook) (0.18.0)
+Requirement already satisfied: parso<0.9.0,>=0.8.0 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from jedi>=0.16->ipython>=7.23.1->ipykernel->jupyter) (0.8.3)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from packaging->qtpy>=2.0.1->qtconsole->jupyter) (3.0.4)
+Requirement already satisfied: pycparser in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi->notebook) (2.21)
+Requirement already satisfied: zipp>=0.5 in /opt/anaconda3/envs/3DCT/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->jsonschema>=2.6->nbformat->notebook) (3.7.0)
+Installing collected packages: widgetsnbextension, jupyterlab-widgets, ipywidgets, jupyter-console, jupyter
+ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Permission denied: '/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/widgetsnbextension-3.6.0.dist-info'
+Consider using the `--user` option or check the permissions.
+
+(3DCT) trellu@upgonsrv1:~$ jupyter notebook
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/3DCT/bin/jupyter-notebook", line 7, in <module>
+    from notebook.notebookapp import main
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/notebook/notebookapp.py", line 43, in <module>
+    from jinja2 import Environment, FileSystemLoader
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/jinja2/__init__.py", line 8, in <module>
+    from .environment import Environment as Environment
+ValueError: source code string cannot contain null bytes
+(3DCT) trellu@upgonsrv1:~$ ls
+Desktop    Downloads         Music     Public     Videos
+Documents  examples.desktop  Pictures  Templates
+(3DCT) trellu@upgonsrv1:~$ cd ..
+(3DCT) trellu@upgonsrv1:/home$ cd ..
+(3DCT) trellu@upgonsrv1:/$ ls
+bin    data2  home            lost+found  root       srv   usr
+boot   data3  initrd.img      media       run        ssd1  var
+cdrom  data4  initrd.img.old  mnt         sbin       ssd2  vmlinuz
+core   dev    lib             opt         snap       sys   vmlinuz.old
+data1  etc    lib64           proc        softwares  tmp
+(3DCT) trellu@upgonsrv1:/$ cd opt/anaconda3
+(3DCT) trellu@upgonsrv1:/opt/anaconda3$ ls
+bin              include      phrasebooks  share
+compiler_compat  lib          pkgs         shell
+condabin         libexec      plugins      ssl
+conda-meta       LICENSE.txt  pyodbc.pyi   translations
+doc              licensing    qml          var
+envs             man          resources    x86_64-conda_cos6-linux-gnu
+etc              mkspecs      sbin         x86_64-conda-linux-gnu
+(3DCT) trellu@upgonsrv1:/opt/anaconda3$ cd envs
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs$ ls
+3DCT
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs$ cd 3DCT
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ ls
+bin              doc      lib        mkspecs      qml        ssl
+compiler_compat  etc      libexec    phrasebooks  resources  translations
+conda-meta       include  licensing  plugins      share      var
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ cd /
+(3DCT) trellu@upgonsrv1:/$ ls
+bin    data2  home            lost+found  root       srv   usr
+boot   data3  initrd.img      media       run        ssd1  var
+cdrom  data4  initrd.img.old  mnt         sbin       ssd2  vmlinuz
+core   dev    lib             opt         snap       sys   vmlinuz.old
+data1  etc    lib64           proc        softwares  tmp
+(3DCT) trellu@upgonsrv1:/$ cd usr
+(3DCT) trellu@upgonsrv1:/usr$ ls
+bin  games  include  lib  lib64  libexec  local  sbin  share  src
+(3DCT) trellu@upgonsrv1:/usr$ cd ..
+(3DCT) trellu@upgonsrv1:/$ cd home
+(3DCT) trellu@upgonsrv1:/home$ ls
+angirard        automation  douma     kalbfuss    nazarov       trellu
+ansible-restic  banterle    fschneid  lost+found  pschalbeadm
+arpat           buergy      hatzopou  mueller     svitlnxadmin
+(3DCT) trellu@upgonsrv1:/home$ cd trellu/
+(3DCT) trellu@upgonsrv1:~$ ls
+Desktop    Downloads         Music     Public     Videos
+Documents  examples.desktop  Pictures  Templates
+(3DCT) trellu@upgonsrv1:~$ cd Documents/
+(3DCT) trellu@upgonsrv1:~/Documents$ ls
+3DeeCellTracker-master
+(3DCT) trellu@upgonsrv1:~/Documents$ cd 3DeeCellTracker-master/
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ jupyter notebook
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/3DCT/bin/jupyter-notebook", line 7, in <module>
+    from notebook.notebookapp import main
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/notebook/notebookapp.py", line 43, in <module>
+    from jinja2 import Environment, FileSystemLoader
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/jinja2/__init__.py", line 8, in <module>
+    from .environment import Environment as Environment
+ValueError: source code string cannot contain null bytes
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ jupyter-notebook
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/3DCT/bin/jupyter-notebook", line 7, in <module>
+    from notebook.notebookapp import main
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/notebook/notebookapp.py", line 43, in <module>
+    from jinja2 import Environment, FileSystemLoader
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/jinja2/__init__.py", line 8, in <module>
+    from .environment import Environment as Environment
+ValueError: source code string cannot contain null bytes
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ jupyter notebook
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/3DCT/bin/jupyter-notebook", line 7, in <module>
+    from notebook.notebookapp import main
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/notebook/notebookapp.py", line 43, in <module>
+    from jinja2 import Environment, FileSystemLoader
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/jinja2/__init__.py", line 8, in <module>
+    from .environment import Environment as Environment
+ValueError: source code string cannot contain null bytes
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ ls
+3DCT-CPU.yml  CellTracker          Doc       LICENSE  pictures   setup.py
+3DCT.yml      Deprecated_programs  Examples  LOG.MD   README.md
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ cd CellTracker/
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/CellTracker$ ls
+analyses.py  preprocess.py  tracker.py  track.py  unet3d.py  watershed.py
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/CellTracker$ cd ..
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ open README.md
+Couldn't get a file descriptor referring to the console
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ ls
+3DCT-CPU.yml  CellTracker          Doc       LICENSE  pictures   setup.py
+3DCT.yml      Deprecated_programs  Examples  LOG.MD   README.md
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ cd Examples/
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ ls
+3D_U_Net_training-clear.ipynb  ensemble_mode_worm4-clear.ipynb  single_mode_worm1-clear.ipynb
+3D_U_Net_training.html         ensemble_mode_worm4.html         single_mode_worm1.html
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ open single_mode_worm1-clear.ipynb 
+Couldn't get a file descriptor referring to the console
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ which jupyter
+/opt/anaconda3/envs/3DCT/bin/jupyter
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ -h jupyter
+-h: command not found
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ jupyter
+usage: jupyter [-h] [--version] [--config-dir] [--data-dir] [--runtime-dir]
+               [--paths] [--json] [--debug]
+               [subcommand]
+
+Jupyter: Interactive Computing
+
+positional arguments:
+  subcommand     the subcommand to launch
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --version      show the versions of core jupyter packages and exit
+  --config-dir   show Jupyter config dir
+  --data-dir     show Jupyter data dir
+  --runtime-dir  show Jupyter runtime dir
+  --paths        show all Jupyter paths. Add --json for machine-readable
+                 format.
+  --json         output paths as machine-readable json
+  --debug        output debug information about paths
+
+Available subcommands: bundlerextension dejavu execute kernel kernelspec
+migrate nbconvert nbextension notebook qtconsole run serverextension
+troubleshoot trust
+
+Please specify a subcommand or one of the optional arguments.
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ jupyter -h
+usage: jupyter [-h] [--version] [--config-dir] [--data-dir] [--runtime-dir]
+               [--paths] [--json] [--debug]
+               [subcommand]
+
+Jupyter: Interactive Computing
+
+positional arguments:
+  subcommand     the subcommand to launch
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --version      show the versions of core jupyter packages and exit
+  --config-dir   show Jupyter config dir
+  --data-dir     show Jupyter data dir
+  --runtime-dir  show Jupyter runtime dir
+  --paths        show all Jupyter paths. Add --json for machine-readable
+                 format.
+  --json         output paths as machine-readable json
+  --debug        output debug information about paths
+
+Available subcommands: bundlerextension dejavu execute kernel kernelspec
+migrate nbconvert nbextension notebook qtconsole run serverextension
+troubleshoot trust
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ juypter notebook
+
+Command 'juypter' not found, did you mean:
+
+  command 'jupyter' from snap jupyter (1.0.0)
+  command 'jupyter' from deb jupyter-core
+
+See 'snap info <snapname>' for additional versions.
+
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ jupyter notebook
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/3DCT/bin/jupyter-notebook", line 7, in <module>
+    from notebook.notebookapp import main
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/notebook/notebookapp.py", line 43, in <module>
+    from jinja2 import Environment, FileSystemLoader
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/jinja2/__init__.py", line 8, in <module>
+    from .environment import Environment as Environment
+ValueError: source code string cannot contain null bytes
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ which jupyter
+/opt/anaconda3/envs/3DCT/bin/jupyter
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ jupyter notebook
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/3DCT/bin/jupyter-notebook", line 7, in <module>
+    from notebook.notebookapp import main
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/notebook/notebookapp.py", line 43, in <module>
+    from jinja2 import Environment, FileSystemLoader
+  File "/opt/anaconda3/envs/3DCT/lib/python3.7/site-packages/jinja2/__init__.py", line 8, in <module>
+    from .environment import Environment as Environment
+ValueError: source code string cannot contain null bytes
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master/Examples$ cd /
+(3DCT) trellu@upgonsrv1:/$ ls
+bin    core   data3  etc         initrd.img.old  lost+found  opt   run   softwares  ssd2  usr      vmlinuz.old
+boot   data1  data4  home        lib             media       proc  sbin  srv        sys   var
+cdrom  data2  dev    initrd.img  lib64           mnt         root  snap  ssd1       tmp   vmlinuz
+(3DCT) trellu@upgonsrv1:/$ cd opt
+(3DCT) trellu@upgonsrv1:/opt$ ls
+anaconda3       cmake-3.17.0-rc1-Linux-x86_64.sh  google                        Python-3.7.0      VirtualGL
+check-tmp-size  containerd                        jetbrains-toolbox-1.24.11947  Python-3.7.0.tgz
+(3DCT) trellu@upgonsrv1:/opt$ cd anaconda3/
+(3DCT) trellu@upgonsrv1:/opt/anaconda3$ ls
+bin              doc      lib          man          plugins     sbin   translations
+compiler_compat  envs     libexec      mkspecs      pyodbc.pyi  share  var
+condabin         etc      LICENSE.txt  phrasebooks  qml         shell  x86_64-conda_cos6-linux-gnu
+conda-meta       include  licensing    pkgs         resources   ssl    x86_64-conda-linux-gnu
+(3DCT) trellu@upgonsrv1:/opt/anaconda3$ cd envs
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs$ ls
+3DCT
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs$ cd 3DCT/
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ ls
+bin              conda-meta  etc      lib      licensing  phrasebooks  qml        share  translations
+compiler_compat  doc         include  libexec  mkspecs    plugins      resources  ssl    var
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ cd/
+bash: cd/: No such file or directory
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ cd cd /
+bash: cd: too many arguments
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ cd /
+(3DCT) trellu@upgonsrv1:/$ cd home/trellu/
+(3DCT) trellu@upgonsrv1:~$ ls
+Desktop  Documents  Downloads  examples.desktop  Music  Pictures  Public  Templates  Videos
+(3DCT) trellu@upgonsrv1:~$ cd Documents/
+(3DCT) trellu@upgonsrv1:~/Documents$ cd 3DeeCellTracker-master/
+(3DCT) trellu@upgonsrv1:~/Documents/3DeeCellTracker-master$ cd /
+(3DCT) trellu@upgonsrv1:/$ cd opt/
+(3DCT) trellu@upgonsrv1:/opt$ ls
+anaconda3       cmake-3.17.0-rc1-Linux-x86_64.sh  google                        Python-3.7.0      VirtualGL
+check-tmp-size  containerd                        jetbrains-toolbox-1.24.11947  Python-3.7.0.tgz
+(3DCT) trellu@upgonsrv1:/opt$ anaconda3/envs/
+bash: anaconda3/envs/: Is a directory
+(3DCT) trellu@upgonsrv1:/opt$ cd anaconda3/
+(3DCT) trellu@upgonsrv1:/opt/anaconda3$ ls
+bin              doc      lib          man          plugins     sbin   translations
+compiler_compat  envs     libexec      mkspecs      pyodbc.pyi  share  var
+condabin         etc      LICENSE.txt  phrasebooks  qml         shell  x86_64-conda_cos6-linux-gnu
+conda-meta       include  licensing    pkgs         resources   ssl    x86_64-conda-linux-gnu
+(3DCT) trellu@upgonsrv1:/opt/anaconda3$ cd envs/
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs$ ls
+3DCT
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs$ cd  3DCT/
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ ls
+bin              conda-meta  etc      lib      licensing  phrasebooks  qml        share  translations
+compiler_compat  doc         include  libexec  mkspecs    plugins      resources  ssl    var
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ cd lib
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT/lib$ ls
+cmake                             libnppig.so.10                         libQt5QuickTest.so
+cudatoolkit_config.yaml           libnppig.so.10.2.0.243                 libQt5QuickTest.so.5
+dbus-1.0                          libnppim.so                            libQt5QuickTest.so.5.9
+engines-1.1                       libnppim.so.10                         libQt5QuickTest.so.5.9.7
+girepository-1.0                  libnppim.so.10.2.0.243                 libQt5QuickWidgets.prl
+glib-2.0                          libnppist.so                           libQt5QuickWidgets.so
+gstreamer-1.0                     libnppist.so.10                        libQt5QuickWidgets.so.5
+icu                               libnppist.so.10.2.0.243                libQt5QuickWidgets.so.5.9
+itcl4.2.1                         libnppisu.so                           libQt5QuickWidgets.so.5.9.7
+libasan.so                        libnppisu.so.10                        libQt5RemoteObjects.prl
+libasan.so.5                      libnppisu.so.10.2.0.243                libQt5RemoteObjects.so
+libasan.so.5.0.0                  libnppitc.so                           libQt5RemoteObjects.so.5
+libatomic.so                      libnppitc.so.10                        libQt5RemoteObjects.so.5.9
+libatomic.so.1                    libnppitc.so.10.2.0.243                libQt5RemoteObjects.so.5.9.7
+libatomic.so.1.2.0                libnpps.so                             libQt5Script.prl
+libcares.so                       libnpps.so.10                          libQt5Script.so
+libcares.so.2                     libnpps.so.10.2.0.243                  libQt5Script.so.5
+libcares.so.2.5.1                 libnvblas.so                           libQt5Script.so.5.9
+libcrypto.a                       libnvblas.so.10                        libQt5Script.so.5.9.7
+libcrypto.so                      libnvblas.so.10.2.1.243                libQt5ScriptTools.prl
+libcrypto.so.1.1                  libnvgraph.so                          libQt5ScriptTools.so
+libcublasLt.so                    libnvgraph.so.10                       libQt5ScriptTools.so.5
+libcublasLt.so.10                 libnvgraph.so.10.1.243                 libQt5ScriptTools.so.5.9
+libcublasLt.so.10.2.1.243         libnvjpeg.so                           libQt5ScriptTools.so.5.9.7
+libcublas.so                      libnvjpeg.so.10                        libQt5Scxml.prl
+libcublas.so.10                   libnvjpeg.so.10.3.0.243                libQt5Scxml.so
+libcublas.so.10.2.1.243           libnvrtc-builtins.so                   libQt5Scxml.so.5
+libcudart.so                      libnvrtc-builtins.so.10.1              libQt5Scxml.so.5.9
+libcudart.so.10.1                 libnvrtc-builtins.so.10.1.243          libQt5Scxml.so.5.9.7
+libcudart.so.10.1.243             libnvrtc.so                            libQt5Sensors.prl
+libcudnn.so                       libnvrtc.so.10.1                       libQt5Sensors.so
+libcudnn.so.7                     libnvrtc.so.10.1.243                   libQt5Sensors.so.5
+libcudnn.so.7.6.5                 libnvToolsExt.so                       libQt5Sensors.so.5.9
+libcufft.so                       libnvToolsExt.so.1                     libQt5Sensors.so.5.9.7
+libcufft.so.10                    libnvToolsExt.so.1.0.0                 libQt5SerialBus.prl
+libcufft.so.10.1.1.243            libnvvm.so                             libQt5SerialBus.so
+libcufftw.so                      libnvvm.so.3                           libQt5SerialBus.so.5
+libcufftw.so.10                   libnvvm.so.3.3.0                       libQt5SerialBus.so.5.9
+libcufftw.so.10.1.1.243           libomp-fallback-cstring.o              libQt5SerialBus.so.5.9.7
+libcupti.so                       libomp-fallback-cstring.spv            libQt5SerialPort.prl
+libcupti.so.10.1                  libomp-spirvdevicertl-optional.o       libQt5SerialPort.so
+libcupti.so.10.1.132              libomp-spirvdevicertl-required.o       libQt5SerialPort.so.5
+libcurand.so                      libomptarget-opencl-optional.bc        libQt5SerialPort.so.5.9
+libcurand.so.10                   libomptarget-opencl-required.bc        libQt5SerialPort.so.5.9.7
+libcurand.so.10.1.1.243           libomptarget.rtl.level0.so             libQt5ServiceSupport.a
+libcusolver.so                    libomptarget.rtl.opencl.so             libQt5ServiceSupport.prl
+libcusolver.so.10                 libomptarget.rtl.x86_64.so             libQt5Sql.prl
+libcusolver.so.10.2.0.243         libomptarget.so                        libQt5Sql.so
+libcusparse.so                    libpanel.a                             libQt5Sql.so.5
+libcusparse.so.10                 libpanel.so                            libQt5Sql.so.5.9
+libcusparse.so.10.3.0.243         libpanel.so.6                          libQt5Sql.so.5.9.7
+libdbus-1.a                       libpanel.so.6.3                        libQt5Svg.prl
+libdbus-1.so                      libpanelw.a                            libQt5Svg.so
+libdbus-1.so.3                    libpanelw.so                           libQt5Svg.so.5
+libdbus-1.so.3.29.0               libpanelw.so.6                         libQt5Svg.so.5.9
+libdevice.10.bc                   libpanelw.so.6.3                       libQt5Svg.so.5.9.7
+libedit.a                         libpcre.a                              libQt5Test.prl
+libedit.so                        libpcrecpp.a                           libQt5Test.so
+libedit.so.0                      libpcrecpp.so                          libQt5Test.so.5
+libedit.so.0.0.68                 libpcrecpp.so.0                        libQt5Test.so.5.9
+libexpat.a                        libpcrecpp.so.0.0.2                    libQt5Test.so.5.9.7
+libexpat.so                       libpcreposix.a                         libQt5TextToSpeech.prl
+libexpat.so.1                     libpcreposix.so                        libQt5TextToSpeech.so
+libexpat.so.1.8.4                 libpcreposix.so.0                      libQt5TextToSpeech.so.5
+libffi.a                          libpcreposix.so.0.0.7                  libQt5TextToSpeech.so.5.9
+libffi.so                         libpcre.so                             libQt5TextToSpeech.so.5.9.7
+libffi.so.6                       libpcre.so.1                           libQt5ThemeSupport.a
+libffi.so.6.0.4                   libpcre.so.1.2.13                      libQt5ThemeSupport.prl
+libfontconfig.a                   libpng16.a                             libQt5UiTools.a
+libfontconfig.so                  libpng16.so                            libQt5UiTools.prl
+libfontconfig.so.1                libpng16.so.16                         libQt5WebChannel.prl
+libfontconfig.so.1.12.0           libpng16.so.16.37.0                    libQt5WebChannel.so
+libform.a                         libpng.a                               libQt5WebChannel.so.5
+libform.so                        libpng.so                              libQt5WebChannel.so.5.9
+libform.so.6                      libprotobuf-lite.so                    libQt5WebChannel.so.5.9.7
+libform.so.6.3                    libprotobuf-lite.so.30                 libQt5WebEngineCore.prl
+libformw.a                        libprotobuf-lite.so.30.0.1             libQt5WebEngineCore.so
+libformw.so                       libprotobuf.so                         libQt5WebEngineCore.so.5
+libformw.so.6                     libprotobuf.so.30                      libQt5WebEngineCore.so.5.9
+libformw.so.6.3                   libprotobuf.so.30.0.1                  libQt5WebEngineCore.so.5.9.7
+libfreetype.a                     libprotoc.so                           libQt5WebEngine.prl
+libfreetype.so                    libprotoc.so.30                        libQt5WebEngine.so
+libfreetype.so.6                  libprotoc.so.30.0.1                    libQt5WebEngine.so.5
+libfreetype.so.6.18.0             libpython3.7m.a                        libQt5WebEngine.so.5.9
+libgcc_s.so                       libpython3.7m.so                       libQt5WebEngine.so.5.9.7
+libgcc_s.so.1                     libpython3.7m.so.1                     libQt5WebEngineWidgets.prl
+libgfortran.so                    libpython3.7m.so.1.0                   libQt5WebEngineWidgets.so
+libgfortran.so.4                  libqgsttools_p.prl                     libQt5WebEngineWidgets.so.5
+libgfortran.so.4.0.0              libqgsttools_p.so                      libQt5WebEngineWidgets.so.5.9
+libgio-2.0.so                     libqgsttools_p.so.1                    libQt5WebEngineWidgets.so.5.9.7
+libgio-2.0.so.0                   libqgsttools_p.so.1.0                  libQt5WebSockets.prl
+libgio-2.0.so.0.6301.0            libqgsttools_p.so.1.0.0                libQt5WebSockets.so
+libglib-2.0.so                    libQt53DAnimation.prl                  libQt5WebSockets.so.5
+libglib-2.0.so.0                  libQt53DAnimation.so                   libQt5WebSockets.so.5.9
+libglib-2.0.so.0.6301.0           libQt53DAnimation.so.5                 libQt5WebSockets.so.5.9.7
+libgmodule-2.0.so                 libQt53DAnimation.so.5.9               libQt5WebView.prl
+libgmodule-2.0.so.0               libQt53DAnimation.so.5.9.7             libQt5WebView.so
+libgmodule-2.0.so.0.6301.0        libQt53DCore.prl                       libQt5WebView.so.5
+libgobject-2.0.so                 libQt53DCore.so                        libQt5WebView.so.5.9
+libgobject-2.0.so.0               libQt53DCore.so.5                      libQt5WebView.so.5.9.7
+libgobject-2.0.so.0.6301.0        libQt53DCore.so.5.9                    libQt5Widgets.prl
+libgomp.so                        libQt53DCore.so.5.9.7                  libQt5Widgets.so
+libgomp.so.1                      libQt53DExtras.prl                     libQt5Widgets.so.5
+libgomp.so.1.0.0                  libQt53DExtras.so                      libQt5Widgets.so.5.9
+libgstallocators-1.0.la           libQt53DExtras.so.5                    libQt5Widgets.so.5.9.7
+libgstallocators-1.0.so           libQt53DExtras.so.5.9                  libQt5X11Extras.prl
+libgstallocators-1.0.so.0         libQt53DExtras.so.5.9.7                libQt5X11Extras.so
+libgstallocators-1.0.so.0.1400.0  libQt53DInput.prl                      libQt5X11Extras.so.5
+libgstapp-1.0.la                  libQt53DInput.so                       libQt5X11Extras.so.5.9
+libgstapp-1.0.so                  libQt53DInput.so.5                     libQt5X11Extras.so.5.9.7
+libgstapp-1.0.so.0                libQt53DInput.so.5.9                   libQt5XcbQpa.prl
+libgstapp-1.0.so.0.1400.0         libQt53DInput.so.5.9.7                 libQt5XcbQpa.so
+libgstaudio-1.0.la                libQt53DLogic.prl                      libQt5XcbQpa.so.5
+libgstaudio-1.0.so                libQt53DLogic.so                       libQt5XcbQpa.so.5.9
+libgstaudio-1.0.so.0              libQt53DLogic.so.5                     libQt5XcbQpa.so.5.9.7
+libgstaudio-1.0.so.0.1400.0       libQt53DLogic.so.5.9                   libQt5XmlPatterns.prl
+libgstbase-1.0.la                 libQt53DLogic.so.5.9.7                 libQt5XmlPatterns.so
+libgstbase-1.0.so                 libQt53DQuickAnimation.prl             libQt5XmlPatterns.so.5
+libgstbase-1.0.so.0               libQt53DQuickAnimation.so              libQt5XmlPatterns.so.5.9
+libgstbase-1.0.so.0.1400.0        libQt53DQuickAnimation.so.5            libQt5XmlPatterns.so.5.9.7
+libgstcheck-1.0.la                libQt53DQuickAnimation.so.5.9          libQt5Xml.prl
+libgstcheck-1.0.so                libQt53DQuickAnimation.so.5.9.7        libQt5Xml.so
+libgstcheck-1.0.so.0              libQt53DQuickExtras.prl                libQt5Xml.so.5
+libgstcheck-1.0.so.0.1400.0       libQt53DQuickExtras.so                 libQt5Xml.so.5.9
+libgstcontroller-1.0.la           libQt53DQuickExtras.so.5               libQt5Xml.so.5.9.7
+libgstcontroller-1.0.so           libQt53DQuickExtras.so.5.9             libquadmath.so
+libgstcontroller-1.0.so.0         libQt53DQuickExtras.so.5.9.7           libquadmath.so.0
+libgstcontroller-1.0.so.0.1400.0  libQt53DQuickInput.prl                 libquadmath.so.0.0.0
+libgstfft-1.0.la                  libQt53DQuickInput.so                  libreadline.a
+libgstfft-1.0.so                  libQt53DQuickInput.so.5                libreadline.so
+libgstfft-1.0.so.0                libQt53DQuickInput.so.5.9              libreadline.so.7
+libgstfft-1.0.so.0.1400.0         libQt53DQuickInput.so.5.9.7            libreadline.so.7.0
+libgstgl-1.0.la                   libQt53DQuick.prl                      libsodium.a
+libgstgl-1.0.so                   libQt53DQuickRender.prl                libsodium.so
+libgstgl-1.0.so.0                 libQt53DQuickRender.so                 libsodium.so.23
+libgstgl-1.0.so.0.1400.0          libQt53DQuickRender.so.5               libsodium.so.23.3.0
+libgstnet-1.0.la                  libQt53DQuickRender.so.5.9             libsqlite3.a
+libgstnet-1.0.so                  libQt53DQuickRender.so.5.9.7           libsqlite3.so
+libgstnet-1.0.so.0                libQt53DQuickScene2D.prl               libsqlite3.so.0
+libgstnet-1.0.so.0.1400.0         libQt53DQuickScene2D.so                libsqlite3.so.0.8.6
+libgstpbutils-1.0.la              libQt53DQuickScene2D.so.5              libssl.a
+libgstpbutils-1.0.so              libQt53DQuickScene2D.so.5.9            libssl.so
+libgstpbutils-1.0.so.0            libQt53DQuickScene2D.so.5.9.7          libssl.so.1.1
+libgstpbutils-1.0.so.0.1400.0     libQt53DQuick.so                       libstdc++.so
+libgstreamer-1.0.la               libQt53DQuick.so.5                     libstdc++.so.6
+libgstreamer-1.0.so               libQt53DQuick.so.5.9                   libstdc++.so.6.0.28
+libgstreamer-1.0.so.0             libQt53DQuick.so.5.9.7                 libtcl8.6.so
+libgstreamer-1.0.so.0.1400.0      libQt53DRender.prl                     libtcl.so
+libgstriff-1.0.la                 libQt53DRender.so                      libtclstub8.6.a
+libgstriff-1.0.so                 libQt53DRender.so.5                    libtiff.a
+libgstriff-1.0.so.0               libQt53DRender.so.5.9                  libtiff.so
+libgstriff-1.0.so.0.1400.0        libQt53DRender.so.5.9.7                libtiff.so.5
+libgstrtp-1.0.la                  libQt5AccessibilitySupport.a           libtiff.so.5.6.0
+libgstrtp-1.0.so                  libQt5AccessibilitySupport.prl         libtiffxx.a
+libgstrtp-1.0.so.0                libQt5Bluetooth.prl                    libtiffxx.so
+libgstrtp-1.0.so.0.1400.0         libQt5Bluetooth.so                     libtiffxx.so.5
+libgstrtsp-1.0.la                 libQt5Bluetooth.so.5                   libtiffxx.so.5.6.0
+libgstrtsp-1.0.so                 libQt5Bluetooth.so.5.9                 libtinfo.a
+libgstrtsp-1.0.so.0               libQt5Bluetooth.so.5.9.7               libtinfo.so
+libgstrtsp-1.0.so.0.1400.0        libQt5Bootstrap.a                      libtinfo.so.6
+libgstsdp-1.0.la                  libQt5Bootstrap.prl                    libtinfo.so.6.3
+libgstsdp-1.0.so                  libQt5Charts.prl                       libtinfow.a
+libgstsdp-1.0.so.0                libQt5Charts.so                        libtinfow.so
+libgstsdp-1.0.so.0.1400.0         libQt5Charts.so.5                      libtinfow.so.6
+libgsttag-1.0.la                  libQt5Charts.so.5.9                    libtinfow.so.6.3
+libgsttag-1.0.so                  libQt5Charts.so.5.9.7                  libtk8.6.so
+libgsttag-1.0.so.0                libQt5Concurrent.prl                   libtk.so
+libgsttag-1.0.so.0.1400.0         libQt5Concurrent.so                    libtkstub8.6.a
+libgstvideo-1.0.la                libQt5Concurrent.so.5                  libtsan.so
+libgstvideo-1.0.so                libQt5Concurrent.so.5.9                libtsan.so.0
+libgstvideo-1.0.so.0              libQt5Concurrent.so.5.9.7              libtsan.so.0.0.0
+libgstvideo-1.0.so.0.1400.0       libQt5Core.prl                         libubsan.so
+libgthread-2.0.so                 libQt5Core.so                          libubsan.so.1
+libgthread-2.0.so.0               libQt5Core.so.5                        libubsan.so.1.0.0
+libgthread-2.0.so.0.6301.0        libQt5Core.so.5.9                      libuuid.a
+libhdf5.a                         libQt5Core.so.5.9.7                    libuuid.so
+libhdf5_cpp.a                     libQt5DataVisualization.prl            libuuid.so.1
+libhdf5_cpp.so                    libQt5DataVisualization.so             libuuid.so.1.0.0
+libhdf5_cpp.so.103                libQt5DataVisualization.so.5           libwebp.a
+libhdf5_cpp.so.103.2.0            libQt5DataVisualization.so.5.9         libwebpdecoder.a
+libhdf5_fortran.a                 libQt5DataVisualization.so.5.9.7       libwebpdecoder.so
+libhdf5_fortran.so                libQt5DBus.prl                         libwebpdecoder.so.3
+libhdf5_fortran.so.102            libQt5DBus.so                          libwebpdecoder.so.3.1.3
+libhdf5_fortran.so.102.0.1        libQt5DBus.so.5                        libwebpmux.a
+libhdf5_hl.a                      libQt5DBus.so.5.9                      libwebpmux.so
+libhdf5_hl_cpp.a                  libQt5DBus.so.5.9.7                    libwebpmux.so.3
+libhdf5_hl_cpp.so                 libQt5DesignerComponents.prl           libwebpmux.so.3.0.8
+libhdf5_hl_cpp.so.100             libQt5DesignerComponents.so            libwebp.so
+libhdf5_hl_cpp.so.100.1.4         libQt5DesignerComponents.so.5          libwebp.so.7
+libhdf5_hl_fortran.a              libQt5DesignerComponents.so.5.9        libwebp.so.7.1.3
+libhdf5hl_fortran.a               libQt5DesignerComponents.so.5.9.7      libxcb.a
+libhdf5_hl_fortran.so             libQt5Designer.prl                     libxcb-composite.a
+libhdf5hl_fortran.so              libQt5Designer.so                      libxcb-composite.so
+libhdf5hl_fortran.so.100          libQt5Designer.so.5                    libxcb-composite.so.0
+libhdf5hl_fortran.so.100.0.5      libQt5Designer.so.5.9                  libxcb-composite.so.0.0.0
+libhdf5_hl.so                     libQt5Designer.so.5.9.7                libxcb-damage.a
+libhdf5_hl.so.100                 libQt5DeviceDiscoverySupport.a         libxcb-damage.so
+libhdf5_hl.so.100.1.3             libQt5DeviceDiscoverySupport.prl       libxcb-damage.so.0
+libhdf5.settings                  libQt5EglFSDeviceIntegration.prl       libxcb-damage.so.0.0.0
+libhdf5.so                        libQt5EglFSDeviceIntegration.so        libxcb-dpms.a
+libhdf5.so.103                    libQt5EglFSDeviceIntegration.so.5      libxcb-dpms.so
+libhdf5.so.103.2.0                libQt5EglFSDeviceIntegration.so.5.9    libxcb-dpms.so.0
+libhistory.a                      libQt5EglFSDeviceIntegration.so.5.9.7  libxcb-dpms.so.0.0.0
+libhistory.so                     libQt5EglSupport.a                     libxcb-dri2.a
+libhistory.so.7                   libQt5EglSupport.prl                   libxcb-dri2.so
+libhistory.so.7.0                 libQt5EventDispatcherSupport.a         libxcb-dri2.so.0
+libicudata.a                      libQt5EventDispatcherSupport.prl       libxcb-dri2.so.0.0.0
+libicudata.so                     libQt5FbSupport.a                      libxcb-dri3.a
+libicudata.so.58                  libQt5FbSupport.prl                    libxcb-dri3.so
+libicudata.so.58.2                libQt5FontDatabaseSupport.a            libxcb-dri3.so.0
+libicui18n.a                      libQt5FontDatabaseSupport.prl          libxcb-dri3.so.0.0.0
+libicui18n.so                     libQt5Gamepad.prl                      libxcb-glx.a
+libicui18n.so.58                  libQt5Gamepad.so                       libxcb-glx.so
+libicui18n.so.58.2                libQt5Gamepad.so.5                     libxcb-glx.so.0
+libicuio.a                        libQt5Gamepad.so.5.9                   libxcb-glx.so.0.0.0
+libicuio.so                       libQt5Gamepad.so.5.9.7                 libxcb-present.a
+libicuio.so.58                    libQt5GlxSupport.a                     libxcb-present.so
+libicuio.so.58.2                  libQt5GlxSupport.prl                   libxcb-present.so.0
+libicutest.a                      libQt5Gui.prl                          libxcb-present.so.0.0.0
+libicutest.so                     libQt5Gui.so                           libxcb-randr.a
+libicutest.so.58                  libQt5Gui.so.5                         libxcb-randr.so
+libicutest.so.58.2                libQt5Gui.so.5.9                       libxcb-randr.so.0
+libicutu.a                        libQt5Gui.so.5.9.7                     libxcb-randr.so.0.1.0
+libicutu.so                       libQt5Help.prl                         libxcb-record.a
+libicutu.so.58                    libQt5Help.so                          libxcb-record.so
+libicutu.so.58.2                  libQt5Help.so.5                        libxcb-record.so.0
+libicuuc.a                        libQt5Help.so.5.9                      libxcb-record.so.0.0.0
+libicuuc.so                       libQt5Help.so.5.9.7                    libxcb-render.a
+libicuuc.so.58                    libQt5InputSupport.a                   libxcb-render.so
+libicuuc.so.58.2                  libQt5InputSupport.prl                 libxcb-render.so.0
+libiomp5_db.so                    libQt5Location.prl                     libxcb-render.so.0.0.0
+libiomp5.so                       libQt5Location.so                      libxcb-res.a
+libiompstubs5.so                  libQt5Location.so.5                    libxcb-res.so
+libitm.so                         libQt5Location.so.5.9                  libxcb-res.so.0
+libitm.so.1                       libQt5Location.so.5.9.7                libxcb-res.so.0.0.0
+libitm.so.1.0.0                   libQt5Multimedia.prl                   libxcb-screensaver.a
+libjpeg.a                         libQt5MultimediaQuick_p.prl            libxcb-screensaver.so
+libjpeg.so                        libQt5MultimediaQuick_p.so             libxcb-screensaver.so.0
+libjpeg.so.9                      libQt5MultimediaQuick_p.so.5           libxcb-screensaver.so.0.0.0
+libjpeg.so.9.5.0                  libQt5MultimediaQuick_p.so.5.9         libxcb-shape.a
+liblsan.so                        libQt5MultimediaQuick_p.so.5.9.7       libxcb-shape.so
+liblsan.so.0                      libQt5Multimedia.so                    libxcb-shape.so.0
+liblsan.so.0.0.0                  libQt5Multimedia.so.5                  libxcb-shape.so.0.0.0
+liblz4.so                         libQt5Multimedia.so.5.9                libxcb-shm.a
+liblz4.so.1                       libQt5Multimedia.so.5.9.7              libxcb-shm.so
+liblz4.so.1.9.3                   libQt5MultimediaWidgets.prl            libxcb-shm.so.0
+liblzma.a                         libQt5MultimediaWidgets.so             libxcb-shm.so.0.0.0
+liblzma.so                        libQt5MultimediaWidgets.so.5           libxcb.so
+liblzma.so.5                      libQt5MultimediaWidgets.so.5.9         libxcb.so.1
+liblzma.so.5.2.5                  libQt5MultimediaWidgets.so.5.9.7       libxcb.so.1.1.0
+libmenu.a                         libQt5NetworkAuth.prl                  libxcb-sync.a
+libmenu.so                        libQt5NetworkAuth.so                   libxcb-sync.so
+libmenu.so.6                      libQt5NetworkAuth.so.5                 libxcb-sync.so.1
+libmenu.so.6.3                    libQt5NetworkAuth.so.5.9               libxcb-sync.so.1.0.0
+libmenuw.a                        libQt5NetworkAuth.so.5.9.7             libxcb-xf86dri.a
+libmenuw.so                       libQt5Network.prl                      libxcb-xf86dri.so
+libmenuw.so.6                     libQt5Network.so                       libxcb-xf86dri.so.0
+libmenuw.so.6.3                   libQt5Network.so.5                     libxcb-xf86dri.so.0.0.0
+libmkl_avx2.so                    libQt5Network.so.5.9                   libxcb-xfixes.a
+libmkl_avx512_mic.so              libQt5Network.so.5.9.7                 libxcb-xfixes.so
+libmkl_avx512.so                  libQt5Nfc.prl                          libxcb-xfixes.so.0
+libmkl_avx.so                     libQt5Nfc.so                           libxcb-xfixes.so.0.0.0
+libmkl_blacs_intelmpi_ilp64.so    libQt5Nfc.so.5                         libxcb-xinerama.a
+libmkl_blacs_intelmpi_lp64.so     libQt5Nfc.so.5.9                       libxcb-xinerama.so
+libmkl_blacs_openmpi_ilp64.so     libQt5Nfc.so.5.9.7                     libxcb-xinerama.so.0
+libmkl_blacs_openmpi_lp64.so      libQt5OpenGLExtensions.a               libxcb-xinerama.so.0.0.0
+libmkl_blacs_sgimpt_ilp64.so      libQt5OpenGLExtensions.prl             libxcb-xinput.a
+libmkl_blacs_sgimpt_lp64.so       libQt5OpenGL.prl                       libxcb-xinput.so
+libmkl_cdft_core.so               libQt5OpenGL.so                        libxcb-xinput.so.0
+libmkl_core.so                    libQt5OpenGL.so.5                      libxcb-xinput.so.0.1.0
+libmkl_def.so                     libQt5OpenGL.so.5.9                    libxcb-xkb.a
+libmkl_gf_ilp64.so                libQt5OpenGL.so.5.9.7                  libxcb-xkb.so
+libmkl_gf_lp64.so                 libQt5PacketProtocol.a                 libxcb-xkb.so.1
+libmkl_gnu_thread.so              libQt5PacketProtocol.prl               libxcb-xkb.so.1.0.0
+libmkl_intel_ilp64.so             libQt5PlatformCompositorSupport.a      libxcb-xtest.a
+libmkl_intel_lp64.so              libQt5PlatformCompositorSupport.prl    libxcb-xtest.so
+libmkl_intel_thread.so            libQt5Positioning.prl                  libxcb-xtest.so.0
+libmkl_mc3.so                     libQt5Positioning.so                   libxcb-xtest.so.0.0.0
+libmkl_mc.so                      libQt5Positioning.so.5                 libxcb-xv.a
+libmkl_pgi_thread.so              libQt5Positioning.so.5.9               libxcb-xvmc.a
+libmkl_rt.so                      libQt5Positioning.so.5.9.7             libxcb-xvmc.so
+libmkl_scalapack_ilp64.so         libQt5PrintSupport.prl                 libxcb-xvmc.so.0
+libmkl_scalapack_lp64.so          libQt5PrintSupport.so                  libxcb-xvmc.so.0.0.0
+libmkl_sequential.so              libQt5PrintSupport.so.5                libxcb-xv.so
+libmkl_tbb_thread.so              libQt5PrintSupport.so.5.9              libxcb-xv.so.0
+libmkl_vml_avx2.so                libQt5PrintSupport.so.5.9.7            libxcb-xv.so.0.0.0
+libmkl_vml_avx512_mic.so          libQt5Purchasing.prl                   libxml2.so
+libmkl_vml_avx512.so              libQt5Purchasing.so                    libxml2.so.2
+libmkl_vml_avx.so                 libQt5Purchasing.so.5                  libxml2.so.2.9.12
+libmkl_vml_cmpt.so                libQt5Purchasing.so.5.9                libyaml-0.so.2
+libmkl_vml_def.so                 libQt5Purchasing.so.5.9.7              libyaml-0.so.2.0.9
+libmkl_vml_mc2.so                 libQt5QmlDebug.a                       libyaml.a
+libmkl_vml_mc3.so                 libQt5QmlDebug.prl                     libyaml.so
+libmkl_vml_mc.so                  libQt5QmlDevTools.a                    libz.a
+libncurses.a                      libQt5QmlDevTools.prl                  libzmq.so
+libncurses.so                     libQt5Qml.prl                          libzmq.so.5
+libncurses.so.6                   libQt5Qml.so                           libzmq.so.5.2.4
+libncurses.so.6.3                 libQt5Qml.so.5                         libz.so
+libncursesw.a                     libQt5Qml.so.5.9                       libz.so.1
+libncursesw.so                    libQt5Qml.so.5.9.7                     libz.so.1.2.12
+libncursesw.so.6                  libQt5QuickControls2.prl               libzstd.a
+libncursesw.so.6.3                libQt5QuickControls2.so                libzstd.so
+libnppc.so                        libQt5QuickControls2.so.5              libzstd.so.1
+libnppc.so.10                     libQt5QuickControls2.so.5.9            libzstd.so.1.4.9
+libnppc.so.10.2.0.243             libQt5QuickControls2.so.5.9.7          mkl_msg.cat
+libnppial.so                      libQt5QuickParticles.prl               pkgconfig
+libnppial.so.10                   libQt5QuickParticles.so                python3.7
+libnppial.so.10.2.0.243           libQt5QuickParticles.so.5              sqlite3.34.0
+libnppicc.so                      libQt5QuickParticles.so.5.9            tcl8
+libnppicc.so.10                   libQt5QuickParticles.so.5.9.7          tcl8.6
+libnppicc.so.10.2.0.243           libQt5Quick.prl                        tclConfig.sh
+libnppicom.so                     libQt5Quick.so                         tclooConfig.sh
+libnppicom.so.10                  libQt5Quick.so.5                       tdbc1.1.2
+libnppicom.so.10.2.0.243          libQt5Quick.so.5.9                     tdbcmysql1.1.2
+libnppidei.so                     libQt5Quick.so.5.9.7                   tdbcodbc1.1.2
+libnppidei.so.10                  libQt5QuickTemplates2.prl              tdbcpostgres1.1.2
+libnppidei.so.10.2.0.243          libQt5QuickTemplates2.so               terminfo
+libnppif.so                       libQt5QuickTemplates2.so.5             thread2.8.6
+libnppif.so.10                    libQt5QuickTemplates2.so.5.9           tk8.6
+libnppif.so.10.2.0.243            libQt5QuickTemplates2.so.5.9.7         tkConfig.sh
+libnppig.so                       libQt5QuickTest.prl                    xml2Conf.sh
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT/lib$ cd ..
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT$ cd bin
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT/bin$ ls
+2to3                                h5clear                   openssl                  rst2s5.py
+2to3-3.7                            h5copy                    pal2rgb                  rst2xetex.py
+acountry                            h5debug                   pcre-config              rst2xml.py
+adig                                h5diff                    pcregrep                 rstpep2html.py
+ahost                               h5dump                    pcretest                 saved_model_cli
+assistant                           h5fc                      pip                      send2trash
+canbusutil                          h5format_convert          pixeltool                sip
+captoinfo                           h5import                  pkgdata                  skivi
+chardetect                          h5jam                     pngfix                   sphinx-apidoc
+cjpeg                               h5ls                      png-fix-itxt             sphinx-autogen
+clear                               h5mkgrp                   ppm2tiff                 sphinx-build
+c_rehash                            h5perf_serial             protoc                   sphinx-quickstart
+curve_keygen                        h5redeploy                pybabel                  spyder
+dbus-cleanup-sockets                h5repack                  pycodestyle              sqlite3
+dbus-daemon                         h5repart                  pydoc                    sqlite3_analyzer
+dbus-launch                         h5stat                    pydoc3                   symilar
+dbus-monitor                        h5unjam                   pydoc3.7                 syncqt.pl
+dbus-run-session                    h5watch                   pyflakes                 tabs
+dbus-send                           icu-config                pygmentize               tclsh
+dbus-test-tool                      icuinfo                   pylint                   tclsh8.6
+dbus-update-activation-environment  idle3                     pylupdate5               tensorboard
+dbus-uuidgen                        idle3.7                   pyrcc5                   tflite_convert
+derb                                imageio_download_bin      pyreverse                tf_upgrade_v2
+designer                            imageio_remove_bin        python                   tic
+djpeg                               infocmp                   python3                  tiff2bw
+epylint                             infotocap                 python3.7                tiff2pdf
+f2py                                iptest                    python3.7-config         tiff2ps
+f2py3                               iptest3                   python3.7m               tiff2rgba
+f2py3.7                             ipython                   python3.7m-config        tiffcmp
+fax2ps                              ipython3                  python3-config           tiffcp
+fax2tiff                            isort                     pyuic5                   tiffcrop
+fc-cache                            isort-identify-imports    pyvenv                   tiffdither
+fc-cat                              jpegtran                  pyvenv-3.7               tiffdump
+fc-conflist                         jsonschema                qcollectiongenerator     tiffinfo
+fc-list                             jupyter                   qdbus                    tiffmedian
+fc-match                            jupyter-bundlerextension  qdbuscpp2xml             tiffset
+fc-pattern                          jupyter-dejavu            qdbusviewer              tiffsplit
+fc-query                            jupyter-execute           qdbusxml2cpp             toco
+fc-scan                             jupyter-kernel            qdoc                     toco_from_protos
+fc-validate                         jupyter-kernelspec        qgltf                    toe
+fixqt4headers.pl                    jupyter-migrate           qhelpconverter           tput
+freetype-config                     jupyter-nbconvert         qhelpgenerator           tset
+freeze_graph                        jupyter-nbextension       qlalr                    uic
+gapplication                        jupyter-notebook          qmake                    unlz4
+gdbus                               jupyter-qtconsole         qml                      unlzma
+gdbus-codegen                       jupyter-run               qmlcachegen              unxz
+genbrk                              jupyter-serverextension   qmleasing                unzstd
+gencfu                              jupyter-troubleshoot      qmlimportscanner         webpinfo
+gencnval                            jupyter-trust             qmllint                  webpmux
+gendict                             keyring                   qmlmin                   wheel
+genrb                               lconvert                  qmlplugindump            wish
+gif2h5                              libpng16-config           qmlprofiler              wish8.6
+gio                                 libpng-config             qmlscene                 wrjpgcom
+gio-launch-desktop                  linguist                  qmltestrunner            xml2-config
+gio-querymodules                    lrelease                  qscxmlc                  xmlcatalog
+glib-compile-resources              lupdate                   qta-browser              xmllint
+glib-compile-schemas                lz4                       qtattributionsscanner    xmlpatterns
+glib-genmarshal                     lz4c                      qt.conf                  xmlpatternsvalidator
+glib-gettextize                     lz4cat                    qtdiag                   xmlwf
+glib-mkenums                        lzcat                     qtpaths                  xz
+gobject-query                       lzcmp                     qtplugininfo             xzcat
+gresource                           lzdiff                    qwebengine_convert_dict  xzcmp
+gsettings                           lzegrep                   raw2tiff                 xzdec
+gst-device-monitor-1.0              lzfgrep                   rcc                      xzdiff
+gst-discoverer-1.0                  lzgrep                    rdjpgcom                 xzegrep
+gst-inspect-1.0                     lzless                    repc                     xzfgrep
+gst-launch-1.0                      lzma                      reset                    xzgrep
+gst-play-1.0                        lzmadec                   rst2html4.py             xzless
+gst-stats-1.0                       lzmainfo                  rst2html5.py             xzmore
+gst-typefind-1.0                    lzmore                    rst2html.py              zstd
+gtester                             makeconv                  rst2latex.py             zstdcat
+gtester-report                      markdown_py               rst2man.py               zstdgrep
+h52gif                              moc                       rst2odt_prepstyles.py    zstdless
+h5c++                               ncursesw6-config          rst2odt.py               zstdmt
+h5cc                                normalizer                rst2pseudoxml.py
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT/bin$ cat jupyter-notebook 
+#!/opt/anaconda3/envs/3DCT/bin/python
+
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+from notebook.notebookapp import main
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT/bin$ pyenv
+
+Command 'pyenv' not found, did you mean:
+
+  command 'p7env' from deb libnss3-tools
+  command 'pyvenv' from deb python3-venv
+
+Try: apt install <deb name>
+
+(3DCT) trellu@upgonsrv1:/opt/anaconda3/envs/3DCT/bin$ cd 
+(3DCT) trellu@upgonsrv1:~$ ll
+total 144
+drwxr-xr-x 20 trellu@upgon upgon  4096 May 13 13:53 ./
+drwxr-xr-x 18 root         root   4096 May 12 16:17 ../
+-rw-------  1 trellu@upgon upgon   222 May 12 17:23 .bash_history
+-rw-r--r--  1 trellu@upgon upgon   220 May 12 16:17 .bash_logout
+-rw-r--r--  1 trellu@upgon upgon  3878 May 12 16:57 .bashrc
+drwxr-xr-x 16 trellu@upgon upgon  4096 May 13 13:06 .cache/
+drwxr-xr-x  6 trellu@upgon upgon  4096 May 13 13:27 .CCP4/
+drwx------ 13 trellu@upgon upgon  4096 May 12 16:57 .config/
+drwx------  3 trellu@upgon upgon  4096 May 12 16:17 .dbus/
+drwxr-xr-x  2 trellu@upgon upgon  4096 May 12 16:21 Desktop/
+drwxr-xr-x  3 trellu@upgon upgon  4096 May 13 13:03 Documents/
+drwxr-xr-x  2 trellu@upgon upgon  4096 May 12 16:21 Downloads/
+-rw-r--r--  1 trellu@upgon upgon  8980 May 12 16:17 examples.desktop
+drwx------  3 trellu@upgon upgon  4096 May 13 13:53 .gnupg/
+-rw-------  1 trellu@upgon upgon   998 May 12 16:52 .ICEauthority
+drwxr-xr-x  3 trellu@upgon upgon  4096 May 12 16:18 .kde/
+drwxr-xr-x  3 trellu@upgon upgon  4096 May 12 16:17 .local/
+drwx------  4 trellu@upgon upgon  4096 May 12 16:21 .mozilla/
+drwxr-xr-x  2 trellu@upgon upgon  4096 May 12 16:21 Music/
+drwxr-xr-x  2 trellu@upgon upgon  4096 May 12 16:21 Pictures/
+-rw-r--r--  1 trellu@upgon upgon   807 May 12 16:17 .profile
+drwxr-xr-x  2 trellu@upgon upgon  4096 May 12 16:21 Public/
+drwx------  2 trellu@upgon upgon  4096 May 13 13:53 .ssh/
+drwxr-xr-x  2 trellu@upgon upgon  4096 May 12 16:21 Templates/
+drwxr-xr-x  2 trellu@upgon upgon  4096 May 12 16:21 Videos/
+drwxr-xr-x  2 trellu@upgon upgon  4096 May 12 16:52 .vnc/
+-rw-------  1 trellu@upgon upgon   157 May 12 16:52 .Xauthority
+-rw-------  1 trellu@upgon upgon 18942 May 12 16:52 .xsession-errors
+-rw-------  1 trellu@upgon upgon  6936 May 12 16:18 .xsession-errors.old
+(3DCT) trellu@upgonsrv1:~$ conda deactivate 3DCT
+deactivate does not accept arguments
+remainder_args: ['3DCT']
+
+(3DCT) trellu@upgonsrv1:~$ conda deactivate
+trellu@upgonsrv1:~$  git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+Cloning into '/home/trellu/.pyenv'...
+remote: Enumerating objects: 21263, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 21263 (delta 5), reused 10 (delta 3), pack-reused 21242
+Receiving objects: 100% (21263/21263), 4.26 MiB | 3.11 MiB/s, done.
+Resolving deltas: 100% (14345/14345), done.
+trellu@upgonsrv1:~$ cd ~/.pyenv && src/configure && make -C src
+make: Entering directory '/home/trellu/.pyenv/src'
+gcc -fPIC     -c -o realpath.o realpath.c
+gcc -shared -Wl,-soname,../libexec/pyenv-realpath.dylib  -o ../libexec/pyenv-realpath.dylib realpath.o 
+make: Leaving directory '/home/trellu/.pyenv/src'
+trellu@upgonsrv1:~/.pyenv$ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+trellu@upgonsrv1:~/.pyenv$ echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+trellu@upgonsrv1:~/.pyenv$ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+trellu@upgonsrv1:~/.pyenv$ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+trellu@upgonsrv1:~/.pyenv$ echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+trellu@upgonsrv1:~/.pyenv$ echo 'eval "$(pyenv init -)"' >> ~/.profile
+trellu@upgonsrv1:~/.pyenv$ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+trellu@upgonsrv1:~/.pyenv$ echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+trellu@upgonsrv1:~/.pyenv$ echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+trellu@upgonsrv1:~/.pyenv$ exec "$SHELL"
+trellu@upgon@upgonsrv1:~/.pyenv$ cd
+trellu@upgon@upgonsrv1:~$ pyenv
+pyenv 2.3.0-6-g70b23638
+Usage: pyenv <command> [<args>]
+
+Some useful pyenv commands are:
+   commands    List all available pyenv commands
+   exec        Run an executable with the selected Python version
+   global      Set or show the global Python version(s)
+   help        Display help for a command
+   hooks       List hook scripts for a given pyenv command
+   init        Configure the shell environment for pyenv
+   install     Install a Python version using python-build
+   local       Set or show the local application-specific Python version(s)
+   prefix      Display prefixes for Python versions
+   rehash      Rehash pyenv shims (run this after installing executables)
+   root        Display the root directory where versions and shims are kept
+   shell       Set or show the shell-specific Python version
+   shims       List existing pyenv shims
+   uninstall   Uninstall a specific Python version
+   version     Show the current Python version(s) and its origin
+   --version   Display the version of pyenv
+   version-file   Detect the file that sets the current pyenv version
+   version-name   Show the current Python version
+   version-origin   Explain how the current Python version is set
+   versions    List all Python versions available to pyenv
+   whence      List all Python versions that contain the given executable
+   which       Display the full path to an executable
+
+See `pyenv help <command>' for information on a specific command.
+For full documentation, see: https://github.com/pyenv/pyenv#readme
+trellu@upgon@upgonsrv1:~$ version
+version: command not found
+trellu@upgon@upgonsrv1:~$ pyenv version
+system (set by /home/trellu/.pyenv/version)
+trellu@upgon@upgonsrv1:~$ which python
+/usr/bin/python
+trellu@upgon@upgonsrv1:~$ pyenv install 3.7.3
+Downloading Python-3.7.3.tar.xz...
+-> https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz
+Installing Python-3.7.3...
+Installed Python-3.7.3 to /home/trellu/.pyenv/versions/3.7.3
+
+trellu@upgon@upgonsrv1:~$ pyenv versions
+* system (set by /home/trellu/.pyenv/version)
+  3.7.3
+trellu@upgon@upgonsrv1:~$ pyenv global 
+system
+trellu@upgon@upgonsrv1:~$ pyenv global 3.7.3 
+trellu@upgon@upgonsrv1:~$ pyenv global 
+3.7.3
+trellu@upgon@upgonsrv1:~$ pyenv version
+3.7.3 (set by /home/trellu/.pyenv/version)
+trellu@upgon@upgonsrv1:~$ which python
+/home/trellu/.pyenv/shims/python
+trellu@upgon@upgonsrv1:~$ python
+Python 3.7.3 (default, May 13 2022, 14:33:21) 
+[GCC 7.5.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+trellu@upgon@upgonsrv1:~$ echo $PATH
+/home/trellu/.pyenv/shims:/home/trellu/.pyenv/bin:/opt/anaconda3/condabin:/opt/anaconda3/condabin:/opt/anaconda3/condabin:/usr/local/Particle/bin:/usr/local/cuda-10.2/bin:/usr/local/Particle/bin:/usr/local/IMOD/bin:/usr/local/cuda-10.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+trellu@upgon@upgonsrv1:~$ ls
+Desktop  Documents  Downloads  examples.desktop  Music  Pictures  Public  Templates  Videos
+trellu@upgon@upgonsrv1:~$ cd Documents/
+trellu@upgon@upgonsrv1:~/Documents$ cd ..
+trellu@upgon@upgonsrv1:~$ mkdir Software
+trellu@upgon@upgonsrv1:~$ cd Software/
+trellu@upgon@upgonsrv1:~/Software$ git clone https://github.com/WenChentao/3DeeCellTracker.git
+Cloning into '3DeeCellTracker'...
+remote: Enumerating objects: 819, done.
+remote: Counting objects: 100% (44/44), done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 819 (delta 40), reused 18 (delta 18), pack-reused 775
+Receiving objects: 100% (819/819), 110.38 MiB | 15.42 MiB/s, done.
+Resolving deltas: 100% (424/424), done.
+trellu@upgon@upgonsrv1:~/Software$ cd 3DeeCellTracker/
+trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ ll
+total 60
+drwxr-xr-x 8 trellu@upgon upgon 4096 May 13 14:42 ./
+drwxr-xr-x 3 trellu@upgon upgon 4096 May 13 14:42 ../
+-rw-r--r-- 1 trellu@upgon upgon  321 May 13 14:42 3DCT-CPU.yml
+-rw-r--r-- 1 trellu@upgon upgon  326 May 13 14:42 3DCT.yml
+drwxr-xr-x 2 trellu@upgon upgon 4096 May 13 14:42 CellTracker/
+drwxr-xr-x 5 trellu@upgon upgon 4096 May 13 14:42 Deprecated_programs/
+drwxr-xr-x 3 trellu@upgon upgon 4096 May 13 14:42 Doc/
+drwxr-xr-x 2 trellu@upgon upgon 4096 May 13 14:42 Examples/
+drwxr-xr-x 8 trellu@upgon upgon 4096 May 13 14:42 .git/
+-rw-r--r-- 1 trellu@upgon upgon 1068 May 13 14:42 LICENSE
+-rw-r--r-- 1 trellu@upgon upgon  788 May 13 14:42 LOG.MD
+drwxr-xr-x 2 trellu@upgon upgon 4096 May 13 14:42 pictures/
+-rw-r--r-- 1 trellu@upgon upgon 5979 May 13 14:42 README.md
+-rw-r--r-- 1 trellu@upgon upgon  635 May 13 14:42 setup.py
+trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ python venv venv
+/home/trellu/.pyenv/versions/3.7.3/bin/python: can't open file 'venv': [Errno 2] No such file or directory
+trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ python -m venv venv
+trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ source venv/bin/activate
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ pip list
+Package    Version
+---------- -------
+pip        19.0.3 
+setuptools 40.8.0 
+You are using pip version 19.0.3, however version 22.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ pip install --upgrade pip
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/f3/77/23152f90de45957b59591c34dcb39b78194eb67d088d4f8799e9aa9726c4/pip-22.1-py3-none-any.whl (2.1MB)
+    100% |████████████████████████████████| 2.2MB 10.3MB/s 
+Installing collected packages: pip
+  Found existing installation: pip 19.0.3
+    Uninstalling pip-19.0.3:
+      Successfully uninstalled pip-19.0.3
+Successfully installed pip-22.1
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ pip install opencv-python scipy jupyter tensorflow
+Collecting opencv-python
+  Downloading opencv_python-4.5.5.64-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (60.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.5/60.5 MB 27.5 MB/s eta 0:00:00
+Collecting scipy
+  Downloading scipy-1.7.3-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (38.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 38.1/38.1 MB 30.0 MB/s eta 0:00:00
+Collecting jupyter
+  Using cached jupyter-1.0.0-py2.py3-none-any.whl (2.7 kB)
+Collecting tensorflow
+  Downloading tensorflow-2.8.0-cp37-cp37m-manylinux2010_x86_64.whl (497.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 497.5/497.5 MB 4.7 MB/s eta 0:00:00
+Collecting numpy>=1.14.5
+  Downloading numpy-1.21.6-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (15.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.7/15.7 MB 49.8 MB/s eta 0:00:00
+Collecting notebook
+  Downloading notebook-6.4.11-py3-none-any.whl (9.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.9/9.9 MB 51.1 MB/s eta 0:00:00
+Collecting qtconsole
+  Downloading qtconsole-5.3.0-py3-none-any.whl (120 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 120.6/120.6 kB 17.1 MB/s eta 0:00:00
+Collecting nbconvert
+  Downloading nbconvert-6.5.0-py3-none-any.whl (561 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 561.6/561.6 kB 46.3 MB/s eta 0:00:00
+Collecting ipywidgets
+  Using cached ipywidgets-7.7.0-py2.py3-none-any.whl (123 kB)
+Collecting ipykernel
+  Downloading ipykernel-6.13.0-py3-none-any.whl (131 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.8/131.8 kB 18.8 MB/s eta 0:00:00
+Collecting jupyter-console
+  Using cached jupyter_console-6.4.3-py3-none-any.whl (22 kB)
+Collecting keras-preprocessing>=1.1.1
+  Downloading Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.6/42.6 kB 6.5 MB/s eta 0:00:00
+Collecting absl-py>=0.4.0
+  Downloading absl_py-1.0.0-py3-none-any.whl (126 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 126.7/126.7 kB 18.4 MB/s eta 0:00:00
+Requirement already satisfied: setuptools in ./venv/lib/python3.7/site-packages (from tensorflow) (40.8.0)
+Collecting gast>=0.2.1
+  Downloading gast-0.5.3-py3-none-any.whl (19 kB)
+Collecting google-pasta>=0.1.1
+  Downloading google_pasta-0.2.0-py3-none-any.whl (57 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.5/57.5 kB 8.6 MB/s eta 0:00:00
+Collecting h5py>=2.9.0
+  Downloading h5py-3.6.0-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (4.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.1/4.1 MB 65.4 MB/s eta 0:00:00
+Collecting protobuf>=3.9.2
+  Downloading protobuf-3.20.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 26.7 MB/s eta 0:00:00
+Collecting flatbuffers>=1.12
+  Downloading flatbuffers-2.0-py2.py3-none-any.whl (26 kB)
+Collecting keras<2.9,>=2.8.0rc0
+  Downloading keras-2.8.0-py2.py3-none-any.whl (1.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 57.6 MB/s eta 0:00:00
+Collecting six>=1.12.0
+  Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting opt-einsum>=2.3.2
+  Downloading opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.5/65.5 kB 9.6 MB/s eta 0:00:00
+Collecting typing-extensions>=3.6.6
+  Downloading typing_extensions-4.2.0-py3-none-any.whl (24 kB)
+Collecting tensorflow-io-gcs-filesystem>=0.23.1
+  Downloading tensorflow_io_gcs_filesystem-0.25.0-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (2.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 66.2 MB/s eta 0:00:00
+Collecting termcolor>=1.1.0
+  Downloading termcolor-1.1.0.tar.gz (3.9 kB)
+  Preparing metadata (setup.py) ... done
+Collecting libclang>=9.0.1
+  Downloading libclang-14.0.1-py2.py3-none-manylinux1_x86_64.whl (14.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.5/14.5 MB 46.9 MB/s eta 0:00:00
+Collecting astunparse>=1.6.0
+  Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting wrapt>=1.11.0
+  Downloading wrapt-1.14.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (75 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 75.2/75.2 kB 11.2 MB/s eta 0:00:00
+Collecting tensorboard<2.9,>=2.8
+  Downloading tensorboard-2.8.0-py3-none-any.whl (5.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.8/5.8 MB 55.8 MB/s eta 0:00:00
+Collecting tf-estimator-nightly==2.8.0.dev2021122109
+  Downloading tf_estimator_nightly-2.8.0.dev2021122109-py2.py3-none-any.whl (462 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 462.5/462.5 kB 30.2 MB/s eta 0:00:00
+Collecting grpcio<2.0,>=1.24.3
+  Downloading grpcio-1.46.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 55.4 MB/s eta 0:00:00
+Collecting wheel<1.0,>=0.23.0
+  Downloading wheel-0.37.1-py2.py3-none-any.whl (35 kB)
+Collecting cached-property
+  Downloading cached_property-1.5.2-py2.py3-none-any.whl (7.6 kB)
+Collecting tensorboard-plugin-wit>=1.6.0
+  Downloading tensorboard_plugin_wit-1.8.1-py3-none-any.whl (781 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 781.3/781.3 kB 44.9 MB/s eta 0:00:00
+Collecting werkzeug>=0.11.15
+  Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.9/224.9 kB 21.5 MB/s eta 0:00:00
+Collecting google-auth<3,>=1.6.3
+  Downloading google_auth-2.6.6-py2.py3-none-any.whl (156 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 156.7/156.7 kB 15.4 MB/s eta 0:00:00
+Collecting google-auth-oauthlib<0.5,>=0.4.1
+  Downloading google_auth_oauthlib-0.4.6-py2.py3-none-any.whl (18 kB)
+Collecting setuptools
+  Downloading setuptools-62.2.0-py3-none-any.whl (1.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 38.6 MB/s eta 0:00:00
+Collecting markdown>=2.6.8
+  Downloading Markdown-3.3.7-py3-none-any.whl (97 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.8/97.8 kB 10.1 MB/s eta 0:00:00
+Collecting requests<3,>=2.21.0
+  Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.1/63.1 kB 6.2 MB/s eta 0:00:00
+Collecting tensorboard-data-server<0.7.0,>=0.6.0
+  Downloading tensorboard_data_server-0.6.1-py3-none-manylinux2010_x86_64.whl (4.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 50.9 MB/s eta 0:00:00
+Collecting debugpy>=1.0
+  Downloading debugpy-1.6.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 47.5 MB/s eta 0:00:00
+Collecting tornado>=6.1
+  Downloading tornado-6.1-cp37-cp37m-manylinux2010_x86_64.whl (428 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 428.5/428.5 kB 32.3 MB/s eta 0:00:00
+Collecting matplotlib-inline>=0.1
+  Downloading matplotlib_inline-0.1.3-py3-none-any.whl (8.2 kB)
+Collecting packaging
+  Downloading packaging-21.3-py3-none-any.whl (40 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.8/40.8 kB 3.7 MB/s eta 0:00:00
+Collecting psutil
+  Downloading psutil-5.9.0-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (280 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 280.7/280.7 kB 36.5 MB/s eta 0:00:00
+Collecting jupyter-client>=6.1.12
+  Downloading jupyter_client-7.3.1-py3-none-any.whl (130 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.0/131.0 kB 12.7 MB/s eta 0:00:00
+Collecting ipython>=7.23.1
+  Downloading ipython-7.33.0-py3-none-any.whl (793 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 793.8/793.8 kB 45.4 MB/s eta 0:00:00
+Collecting nest-asyncio
+  Downloading nest_asyncio-1.5.5-py3-none-any.whl (5.2 kB)
+Collecting traitlets>=5.1.0
+  Downloading traitlets-5.2.0-py3-none-any.whl (104 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 104.4/104.4 kB 15.5 MB/s eta 0:00:00
+Collecting ipython-genutils~=0.2.0
+  Downloading ipython_genutils-0.2.0-py2.py3-none-any.whl (26 kB)
+Collecting widgetsnbextension~=3.6.0
+  Using cached widgetsnbextension-3.6.0-py2.py3-none-any.whl (1.6 MB)
+Collecting nbformat>=4.2.0
+  Downloading nbformat-5.4.0-py3-none-any.whl (73 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.3/73.3 kB 11.0 MB/s eta 0:00:00
+Collecting jupyterlab-widgets>=1.0.0
+  Using cached jupyterlab_widgets-1.1.0-py3-none-any.whl (245 kB)
+Collecting prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0
+  Downloading prompt_toolkit-3.0.29-py3-none-any.whl (381 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 381.5/381.5 kB 30.6 MB/s eta 0:00:00
+Collecting pygments
+  Downloading Pygments-2.12.0-py3-none-any.whl (1.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 49.8 MB/s eta 0:00:00
+Collecting tinycss2
+  Downloading tinycss2-1.1.1-py3-none-any.whl (21 kB)
+Collecting entrypoints>=0.2.2
+  Downloading entrypoints-0.4-py3-none-any.whl (5.3 kB)
+Collecting bleach
+  Downloading bleach-5.0.0-py3-none-any.whl (160 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.3/160.3 kB 15.8 MB/s eta 0:00:00
+Collecting defusedxml
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Collecting nbclient>=0.5.0
+  Downloading nbclient-0.6.3-py3-none-any.whl (71 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.5/71.5 kB 11.0 MB/s eta 0:00:00
+Collecting mistune<2,>=0.8.1
+  Downloading mistune-0.8.4-py2.py3-none-any.whl (16 kB)
+Collecting jinja2>=3.0
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 11.5 MB/s eta 0:00:00
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.11.1-py3-none-any.whl (128 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 128.2/128.2 kB 12.1 MB/s eta 0:00:00
+Collecting pandocfilters>=1.4.1
+  Downloading pandocfilters-1.5.0-py2.py3-none-any.whl (8.7 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting jupyter-core>=4.7
+  Downloading jupyter_core-4.10.0-py3-none-any.whl (87 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.3/87.3 kB 8.7 MB/s eta 0:00:00
+Collecting jupyterlab-pygments
+  Downloading jupyterlab_pygments-0.2.2-py2.py3-none-any.whl (21 kB)
+Collecting pyzmq>=17
+  Downloading pyzmq-22.3.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 45.8 MB/s eta 0:00:00
+Collecting terminado>=0.8.3
+  Downloading terminado-0.13.3-py3-none-any.whl (14 kB)
+Collecting prometheus-client
+  Downloading prometheus_client-0.14.1-py3-none-any.whl (59 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.5/59.5 kB 8.7 MB/s eta 0:00:00
+Collecting Send2Trash>=1.8.0
+  Downloading Send2Trash-1.8.0-py3-none-any.whl (18 kB)
+Collecting argon2-cffi
+  Downloading argon2_cffi-21.3.0-py3-none-any.whl (14 kB)
+Collecting qtpy>=2.0.1
+  Downloading QtPy-2.1.0-py3-none-any.whl (68 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 68.2/68.2 kB 10.6 MB/s eta 0:00:00
+Collecting pyasn1-modules>=0.2.1
+  Downloading pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.3/155.3 kB 15.6 MB/s eta 0:00:00
+Collecting cachetools<6.0,>=2.0.0
+  Downloading cachetools-5.0.0-py3-none-any.whl (9.1 kB)
+Collecting rsa<5,>=3.1.4
+  Downloading rsa-4.8-py3-none-any.whl (39 kB)
+Collecting requests-oauthlib>=0.7.0
+  Downloading requests_oauthlib-1.3.1-py2.py3-none-any.whl (23 kB)
+Collecting decorator
+  Downloading decorator-5.1.1-py3-none-any.whl (9.1 kB)
+Collecting pickleshare
+  Downloading pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+Collecting backcall
+  Downloading backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+Collecting pexpect>4.3
+  Downloading pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.0/59.0 kB 9.2 MB/s eta 0:00:00
+Collecting jedi>=0.16
+  Downloading jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 47.1 MB/s eta 0:00:00
+Collecting python-dateutil>=2.8.2
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 32.5 MB/s eta 0:00:00
+Collecting importlib-metadata>=4.4
+  Downloading importlib_metadata-4.11.3-py3-none-any.whl (18 kB)
+Collecting fastjsonschema
+  Downloading fastjsonschema-2.15.3-py3-none-any.whl (22 kB)
+Collecting jsonschema>=2.6
+  Downloading jsonschema-4.5.1-py3-none-any.whl (72 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.9/72.9 kB 10.7 MB/s eta 0:00:00
+Collecting wcwidth
+  Downloading wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting charset-normalizer~=2.0.0
+  Downloading charset_normalizer-2.0.12-py3-none-any.whl (39 kB)
+Collecting idna<4,>=2.5
+  Downloading idna-3.3-py3-none-any.whl (61 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.2/61.2 kB 9.0 MB/s eta 0:00:00
+Collecting certifi>=2017.4.17
+  Downloading certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 149.2/149.2 kB 22.1 MB/s eta 0:00:00
+Collecting urllib3<1.27,>=1.21.1
+  Downloading urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 139.0/139.0 kB 10.0 MB/s eta 0:00:00
+Collecting ptyprocess
+  Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting argon2-cffi-bindings
+  Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (86 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.2/86.2 kB 15.3 MB/s eta 0:00:00
+Collecting soupsieve>1.2
+  Downloading soupsieve-2.3.2.post1-py3-none-any.whl (37 kB)
+Collecting webencodings
+  Downloading webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.3/98.3 kB 14.1 MB/s eta 0:00:00
+Collecting zipp>=0.5
+  Downloading zipp-3.8.0-py3-none-any.whl (5.4 kB)
+Collecting parso<0.9.0,>=0.8.0
+  Downloading parso-0.8.3-py2.py3-none-any.whl (100 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100.8/100.8 kB 15.0 MB/s eta 0:00:00
+Collecting pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0
+  Downloading pyrsistent-0.18.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (117 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.1/117.1 kB 17.2 MB/s eta 0:00:00
+Collecting importlib-resources>=1.4.0
+  Downloading importlib_resources-5.7.1-py3-none-any.whl (28 kB)
+Collecting attrs>=17.4.0
+  Downloading attrs-21.4.0-py2.py3-none-any.whl (60 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.6/60.6 kB 10.4 MB/s eta 0:00:00
+Collecting pyasn1<0.5.0,>=0.4.6
+  Downloading pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.1/77.1 kB 11.8 MB/s eta 0:00:00
+Collecting oauthlib>=3.0.0
+  Downloading oauthlib-3.2.0-py3-none-any.whl (151 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 151.5/151.5 kB 21.4 MB/s eta 0:00:00
+Collecting cffi>=1.0.1
+  Downloading cffi-1.15.0-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (427 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 427.1/427.1 kB 36.1 MB/s eta 0:00:00
+Collecting pycparser
+  Downloading pycparser-2.21-py2.py3-none-any.whl (118 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.7/118.7 kB 16.6 MB/s eta 0:00:00
+Using legacy 'setup.py install' for termcolor, since package 'wheel' is not installed.
+Installing collected packages: webencodings, wcwidth, tf-estimator-nightly, termcolor, tensorboard-plugin-wit, Send2Trash, pyasn1, ptyprocess, pickleshare, mistune, libclang, keras, ipython-genutils, flatbuffers, fastjsonschema, certifi, cached-property, backcall, zipp, wrapt, wheel, werkzeug, urllib3, typing-extensions, traitlets, tornado, tinycss2, tensorflow-io-gcs-filesystem, tensorboard-data-server, soupsieve, six, setuptools, rsa, pyzmq, pyrsistent, pyparsing, pygments, pycparser, pyasn1-modules, psutil, protobuf, prompt-toolkit, prometheus-client, pexpect, parso, pandocfilters, oauthlib, numpy, nest-asyncio, MarkupSafe, jupyterlab-widgets, jupyterlab-pygments, idna, gast, entrypoints, defusedxml, decorator, debugpy, charset-normalizer, cachetools, attrs, terminado, scipy, requests, python-dateutil, packaging, opt-einsum, opencv-python, matplotlib-inline, keras-preprocessing, jupyter-core, jinja2, jedi, importlib-resources, importlib-metadata, h5py, grpcio, google-pasta, google-auth, cffi, bleach, beautifulsoup4, astunparse, absl-py, requests-oauthlib, qtpy, markdown, jupyter-client, jsonschema, ipython, argon2-cffi-bindings, nbformat, ipykernel, google-auth-oauthlib, argon2-cffi, tensorboard, qtconsole, nbclient, jupyter-console, tensorflow, nbconvert, notebook, widgetsnbextension, ipywidgets, jupyter
+  Running setup.py install for termcolor ... done
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 40.8.0
+    Uninstalling setuptools-40.8.0:
+      Successfully uninstalled setuptools-40.8.0
+Successfully installed MarkupSafe-2.1.1 Send2Trash-1.8.0 absl-py-1.0.0 argon2-cffi-21.3.0 argon2-cffi-bindings-21.2.0 astunparse-1.6.3 attrs-21.4.0 backcall-0.2.0 beautifulsoup4-4.11.1 bleach-5.0.0 cached-property-1.5.2 cachetools-5.0.0 certifi-2021.10.8 cffi-1.15.0 charset-normalizer-2.0.12 debugpy-1.6.0 decorator-5.1.1 defusedxml-0.7.1 entrypoints-0.4 fastjsonschema-2.15.3 flatbuffers-2.0 gast-0.5.3 google-auth-2.6.6 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 grpcio-1.46.1 h5py-3.6.0 idna-3.3 importlib-metadata-4.11.3 importlib-resources-5.7.1 ipykernel-6.13.0 ipython-7.33.0 ipython-genutils-0.2.0 ipywidgets-7.7.0 jedi-0.18.1 jinja2-3.1.2 jsonschema-4.5.1 jupyter-1.0.0 jupyter-client-7.3.1 jupyter-console-6.4.3 jupyter-core-4.10.0 jupyterlab-pygments-0.2.2 jupyterlab-widgets-1.1.0 keras-2.8.0 keras-preprocessing-1.1.2 libclang-14.0.1 markdown-3.3.7 matplotlib-inline-0.1.3 mistune-0.8.4 nbclient-0.6.3 nbconvert-6.5.0 nbformat-5.4.0 nest-asyncio-1.5.5 notebook-6.4.11 numpy-1.21.6 oauthlib-3.2.0 opencv-python-4.5.5.64 opt-einsum-3.3.0 packaging-21.3 pandocfilters-1.5.0 parso-0.8.3 pexpect-4.8.0 pickleshare-0.7.5 prometheus-client-0.14.1 prompt-toolkit-3.0.29 protobuf-3.20.1 psutil-5.9.0 ptyprocess-0.7.0 pyasn1-0.4.8 pyasn1-modules-0.2.8 pycparser-2.21 pygments-2.12.0 pyparsing-3.0.9 pyrsistent-0.18.1 python-dateutil-2.8.2 pyzmq-22.3.0 qtconsole-5.3.0 qtpy-2.1.0 requests-2.27.1 requests-oauthlib-1.3.1 rsa-4.8 scipy-1.7.3 setuptools-62.2.0 six-1.16.0 soupsieve-2.3.2.post1 tensorboard-2.8.0 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.1 tensorflow-2.8.0 tensorflow-io-gcs-filesystem-0.25.0 termcolor-1.1.0 terminado-0.13.3 tf-estimator-nightly-2.8.0.dev2021122109 tinycss2-1.1.1 tornado-6.1 traitlets-5.2.0 typing-extensions-4.2.0 urllib3-1.26.9 wcwidth-0.2.5 webencodings-0.5.1 werkzeug-2.1.2 wheel-0.37.1 widgetsnbextension-3.6.0 wrapt-1.14.1 zipp-3.8.0
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ pip install -e .
+Obtaining file:///home/trellu/Software/3DeeCellTracker
+  Preparing metadata (setup.py) ... done
+Installing collected packages: 3DeeCellTracker
+  Running setup.py develop for 3DeeCellTracker
+Successfully installed 3DeeCellTracker-0.4.1
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ jupyter notebook
+[I 14:48:57.583 NotebookApp] Writing notebook server cookie secret to /home/trellu/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 14:48:57.928 NotebookApp] The port 8888 is already in use, trying another port.
+[I 14:48:57.929 NotebookApp] Serving notebooks from local directory: /home/trellu/Software/3DeeCellTracker
+[I 14:48:57.929 NotebookApp] Jupyter Notebook 6.4.11 is running at:
+[I 14:48:57.929 NotebookApp] http://localhost:8889/?token=cfd9fc21bd19781bddcb550c1b60e9a583978e85e5c1b59a
+[I 14:48:57.929 NotebookApp]  or http://127.0.0.1:8889/?token=cfd9fc21bd19781bddcb550c1b60e9a583978e85e5c1b59a
+[I 14:48:57.929 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 14:48:57.984 NotebookApp] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/trellu/.local/share/jupyter/runtime/nbserver-25770-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8889/?token=cfd9fc21bd19781bddcb550c1b60e9a583978e85e5c1b59a
+     or http://127.0.0.1:8889/?token=cfd9fc21bd19781bddcb550c1b60e9a583978e85e5c1b59a
+[I 14:49:24.920 NotebookApp] Writing notebook-signing key to /home/trellu/.local/share/jupyter/notebook_secret
+[W 14:49:24.923 NotebookApp] Notebook Examples/single_mode_worm1-clear.ipynb is not trusted
+[I 14:49:26.154 NotebookApp] Kernel started: ffa88d07-6f68-4923-88e8-f0c929b4f9f3, name: python3
+[IPKernelApp] ERROR | No such comm target registered: jupyter.widget.control
+[IPKernelApp] WARNING | No such comm: 655fd977-118b-4f13-8f8a-1a87bd55464b
+[I 14:51:26.114 NotebookApp] Saving file at /Examples/single_mode_worm1-clear.ipynb
+[I 14:55:26.108 NotebookApp] Saving file at /Examples/single_mode_worm1-clear.ipynb
+[I 14:57:26.110 NotebookApp] Saving file at /Examples/single_mode_worm1-clear.ipynb
+[I 14:59:26.107 NotebookApp] Saving file at /Examples/single_mode_worm1-clear.ipynb
+[I 15:00:34.145 NotebookApp] 302 GET /tree (127.0.0.1) 1.440000ms
+[W 15:02:11.522 NotebookApp] Notebook Examples/3D_U_Net_training-clear.ipynb is not trusted
+[I 15:02:12.071 NotebookApp] Starting buffering for ffa88d07-6f68-4923-88e8-f0c929b4f9f3:36f71c09a09f4770a7518ee4f4e903d7
+[I 15:02:12.074 NotebookApp] Kernel started: fc9689e1-f45c-4286-b816-38a6fd7cd95d, name: python3
+[IPKernelApp] ERROR | No such comm target registered: jupyter.widget.control
+[IPKernelApp] WARNING | No such comm: 084788cb-6d39-465e-8ef7-ee8c88e8d169
+2022-05-13 15:02:21.752574: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-05-13 15:02:23.258455: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1525] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 509 MB memory:  -> device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:3b:00.0, compute capability: 7.5
+2022-05-13 15:02:23.259588: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1525] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 9335 MB memory:  -> device: 1, name: GeForce RTX 2080 Ti, pci bus id: 0000:af:00.0, compute capability: 7.5
+[I 15:04:12.058 NotebookApp] Saving file at /Examples/3D_U_Net_training-clear.ipynb
+[I 15:05:34.101 NotebookApp] 302 GET /tree/Examples (127.0.0.1) 1.320000ms
+[I 15:41:39.349 NotebookApp] Starting buffering for fc9689e1-f45c-4286-b816-38a6fd7cd95d:3681ad4a9de246db8e10db0440873888
+^C[I 15:41:43.737 NotebookApp] interrupted
+Serving notebooks from local directory: /home/trellu/Software/3DeeCellTracker
+2 active kernels
+Jupyter Notebook 6.4.11 is running at:
+http://localhost:8889/?token=cfd9fc21bd19781bddcb550c1b60e9a583978e85e5c1b59a
+ or http://127.0.0.1:8889/?token=cfd9fc21bd19781bddcb550c1b60e9a583978e85e5c1b59a
+Shutdown this notebook server (y/[n])? y
+[C 15:41:45.454 NotebookApp] Shutdown confirmed
+[I 15:41:45.455 NotebookApp] Shutting down 2 kernels
+[I 15:41:45.456 NotebookApp] Kernel shutdown: ffa88d07-6f68-4923-88e8-f0c929b4f9f3
+[I 15:41:48.075 NotebookApp] Kernel shutdown: fc9689e1-f45c-4286-b816-38a6fd7cd95d
+[I 15:41:50.895 NotebookApp] Shutting down 0 terminals
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ groups
+upgon vglusers condausers
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ getent group upgon
+upgon:*:20152:fschneid,hatzopou,kalbfuss,goenczy,buergy,canard,douma,tfavez,ndemont,mpierron,berto,dudin,jha,pourroy,ggarcia,woglar,olivetta,mueller,dastous,ntomas,bhickta
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ which pyenv
+/home/trellu/.pyenv/bin/pyenv
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ 
+
+trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ source venv
+bash: source: venv: is a directory
+trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ source venv/bin/activate
+(venv) trellu@upgon@upgonsrv1:~/Software/3DeeCellTracker$ pip install matplotlib
+
